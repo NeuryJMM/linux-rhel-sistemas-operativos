@@ -34,6 +34,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 04 | [Almacenamiento y particiones](./04-storage-partitions) | Gestión de discos, particiones, sistemas de archivos y puntos de montaje. |
 | 05 | [Scripting en Bash](./05-bash-scripting) | Automatización de tareas administrativas mediante scripts de Bash. |
 | 06 | [VoIP e IaC](./06-voip-iac) | Configuración de un servicio de VoIP y aprovisionamiento de infraestructura mediante IaC. |
+| 07 | [Endurecimiento de SSH, contraseñas y firewall](./07-ssh-password-firewall-hardening) | Restricción del acceso root por SSH, timeout por inactividad, política de contraseñas, expiración y firewall con firewalld. |
 
 ---
 
