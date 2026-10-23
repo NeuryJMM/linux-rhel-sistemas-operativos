@@ -41,6 +41,7 @@ Primera práctica de la materia de Sistemas Operativos (RHEL). Cubre la gestión
 - [Parte F: Eliminar un usuario](#parte-f-eliminar-un-usuario)
 - [Parte G: Añadir un usuario a docentes y verificar sudo](#parte-g-añadir-un-usuario-a-docentes-y-verificar-sudo)
 - [Parte H: Cambiar las contraseñas](#parte-h-cambiar-las-contraseñas)
+- [Demostración en video](#demostración-en-video)
 - [Referencia de comandos](#referencia-de-comandos)
 - [Lo aprendido](#lo-aprendido)
 - [Solución de problemas](#solución-de-problemas-frecuentes)
@@ -306,6 +307,14 @@ El resultado `root` confirma que `nmontero` heredó los privilegios de `sudo` al
 Esta práctica permitió trabajar el ciclo de vida completo de usuarios y grupos en Linux: creación, agrupación, asignación de privilegios administrativos y eliminación, usando los comandos estándar de administración de RHEL.
 
 Se comprendió la diferencia entre el grupo primario y los grupos secundarios de un usuario (y por qué `usermod -aG` es la forma correcta de añadir un grupo sin reemplazar los existentes), cómo delegar privilegios de `sudo` a nivel de usuario y de grupo mediante `/etc/sudoers`, y por qué ese archivo debería editarse con `visudo` para evitar dejarlo en un estado inválido. También se verificó de forma práctica, con `sudo su` y `whoami`, que la pertenencia a un grupo con privilegios en `sudoers` otorga esos privilegios de forma automática a cualquier usuario que se agregue después.
+
+## Demostración en video
+
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica:** [Ver demostración en YouTube](https://www.youtube.com/watch?v=8s3UGKai9P4&list=PLIJEt4hLYnOUAQxFim_nNNvPqBw8Z8VKT)
+
+---
 
 ## Solución de problemas frecuentes
 
