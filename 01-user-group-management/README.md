@@ -1,0 +1,322 @@
+[← Volver al laboratorio](../README.md)
+
+# 01 · Administración de usuarios y permisos en RHEL
+
+![RHEL](https://img.shields.io/badge/Red%20Hat-RHEL-c084fc?style=flat-square&logo=redhat&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-Terminal-f472b6?style=flat-square&logo=linux&logoColor=white)
+![Sudo](https://img.shields.io/badge/Sudoers-Privilegios-60a5fa?style=flat-square)
+![Estado](https://img.shields.io/badge/Estado-Completado-34d399?style=flat-square)
+
+Primera práctica de la materia de Sistemas Operativos (RHEL). Cubre la gestión completa del ciclo de vida de usuarios y grupos en Linux: creación, agrupación, privilegios con `sudo` mediante el archivo `/etc/sudoers`, eliminación y administración de contraseñas.
+
+## Objetivos
+
+| Punto | Descripción |
+|:--:|---|
+| **A** | Crear 6 usuarios siguiendo la nomenclatura: primera letra del nombre + apellido |
+| **B** | Crear los grupos `estudiantes` y `pruebas`, y añadir los 6 usuarios a ambos |
+| **C** | Crear el usuario `profesor` y el grupo `docentes` |
+| **D** | Habilitar privilegios de `sudo` para el usuario `profesor` y el grupo `docentes` editando `/etc/sudoers` |
+| **E** | Retirar los usuarios del grupo `pruebas` y eliminar el grupo |
+| **F** | Eliminar uno de los 6 usuarios creados |
+| **G** | Añadir uno de los 5 usuarios restantes al grupo `docentes` y verificar que obtiene privilegios de `sudo` |
+| **H** | Cambiar la contraseña de los usuarios creados |
+
+## Entorno
+
+| Elemento | Valor |
+|---|---|
+| Distribución | RHEL (Red Hat Enterprise Linux) |
+| Acceso | Terminal local, usuario `Neury0829` con acceso a `root` mediante `su` |
+| Usuarios creados | `nmontero`, `amejia`, `jmontero`, `jmarte`, `jirrizarri`, `smontero`, `profesor` |
+| Grupos creados | `estudiantes`, `pruebas` (temporal), `docentes` |
+
+## Índice
+
+- [Parte A: Crear seis usuarios](#parte-a-crear-seis-usuarios)
+- [Parte B: Crear los grupos y añadir los usuarios](#parte-b-crear-los-grupos-y-añadir-los-usuarios)
+- [Parte C: Usuario profesor y grupo docentes](#parte-c-usuario-profesor-y-grupo-docentes)
+- [Parte D: Privilegios de sudo en /etc/sudoers](#parte-d-privilegios-de-sudo-en-etcsudoers)
+- [Parte E: Retirar usuarios del grupo pruebas y eliminarlo](#parte-e-retirar-usuarios-del-grupo-pruebas-y-eliminarlo)
+- [Parte F: Eliminar un usuario](#parte-f-eliminar-un-usuario)
+- [Parte G: Añadir un usuario a docentes y verificar sudo](#parte-g-añadir-un-usuario-a-docentes-y-verificar-sudo)
+- [Parte H: Cambiar las contraseñas](#parte-h-cambiar-las-contraseñas)
+- [Referencia de comandos](#referencia-de-comandos)
+- [Lo aprendido](#lo-aprendido)
+- [Solución de problemas](#solución-de-problemas-frecuentes)
+
+---
+
+## Parte A: Crear seis usuarios
+
+Partimos de la terminal de RHEL, con el usuario `Neury0829`.
+
+![Terminal de RHEL antes de iniciar](images/a01-terminal-vacia.jpg)
+
+
+**1.** Ejecutamos `su` para entrar en modo root. Se solicita la contraseña.
+
+![Comando su y acceso como root](images/a02-su-root.jpg)
+
+
+**2.** Para crear un usuario en Linux se usa el comando `useradd`. Al estar ya en `root`, no es necesario anteponer `sudo`. La bandera `-m` indica que se debe crear también el directorio *home* del usuario:
+
+```bash
+useradd -m nmontero
+```
+
+**3.** Repetimos el procedimiento para los seis usuarios, siguiendo la nomenclatura *primera letra del nombre + apellido* (`nmontero`, `amejia`, `jmontero`, `jmarte`, `jirrizarri`, `smontero`). Con la flecha hacia arriba del teclado se reutiliza el comando anterior y solo se cambia el nombre.
+
+![Historial de los seis comandos useradd](images/a03-useradd-seis-usuarios.jpg)
+
+
+**4.** Para confirmar que los usuarios se crearon correctamente, revisamos el archivo `/etc/passwd`:
+
+```bash
+cat /etc/passwd
+```
+
+![Usuarios creados en /etc/passwd](images/a04-cat-etc-passwd.jpg)
+
+
+Los seis usuarios aparecen al final del archivo, cada uno con su propio directorio *home* y la shell `/bin/bash`.
+
+---
+
+## Parte B: Crear los grupos y añadir los usuarios
+
+**1.** Creamos los grupos `estudiantes` y `pruebas` con `groupadd`:
+
+![Comandos groupadd estudiantes y pruebas](images/b01-groupadd.jpg)
+
+
+**2.** Confirmamos con `cat /etc/group` que ambos grupos se crearon correctamente.
+
+![Grupos creados en /etc/group](images/b02-cat-etc-group-grupos.jpg)
+
+
+**3.** Para incorporar cada usuario a un grupo se usa `usermod -aG <grupo> <usuario>`. La bandera `-aG` agrega (`-a`, *append*) el grupo como **secundario** del usuario, sin reemplazar su grupo primario. Repetimos el procedimiento con los seis usuarios para el grupo `estudiantes`...
+
+![usermod -aG estudiantes para los seis usuarios](images/b03-usermod-estudiantes.jpg)
+
+
+...y luego para el grupo `pruebas`.
+
+![usermod -aG pruebas para los seis usuarios](images/b04-usermod-pruebas.jpg)
+
+
+**4.** Verificamos con `cat /etc/group` que los seis usuarios quedaron incorporados a ambos grupos.
+
+![Miembros de estudiantes y pruebas en /etc/group](images/b05-cat-etc-group-miembros.jpg)
+
+
+> [!TIP]
+> Omitir la bandera `-a` en `usermod -G` **reemplaza** todos los grupos secundarios del usuario por el que se especifica, en vez de añadirlo. Por eso `-aG` es la forma segura de agregar un usuario a un grupo adicional.
+
+---
+
+## Parte C: Usuario profesor y grupo docentes
+
+**1.** Repetimos el procedimiento de las partes anteriores para crear el usuario `profesor` y el grupo `docentes`:
+
+![useradd profesor y groupadd docentes](images/c01-useradd-profesor-groupadd-docentes.jpg)
+
+
+**2.** Confirmamos la creación del grupo con `cat /etc/group`.
+
+![Grupo docentes en /etc/group](images/c02-cat-etc-group-docentes.jpg)
+
+
+**3.** Confirmamos la creación del usuario con `cat /etc/passwd`.
+
+![Usuario profesor en /etc/passwd](images/c03-cat-etc-passwd-profesor.jpg)
+
+
+---
+
+## Parte D: Privilegios de sudo en /etc/sudoers
+
+**1.** Editamos el archivo de configuración de `sudo` con el editor `nano`:
+
+```bash
+nano /etc/sudoers
+```
+
+![Archivo /etc/sudoers abierto con nano](images/d01-nano-sudoers-inicio.jpg)
+
+
+**2.** Al final del archivo, agregamos dos entradas: una para el usuario `profesor` y otra para el grupo `docentes` (anteponiendo `%` al nombre del grupo). `ALL=(ALL) ALL` otorga privilegios completos de `sudo`:
+
+```text
+profesor ALL=(ALL)     ALL
+%docentes ALL=(ALL)    ALL
+```
+
+![Entradas agregadas para profesor y %docentes](images/d02-nano-sudoers-entradas.jpg)
+
+
+> [!NOTE]
+> El `%` antes del nombre indica que la entrada aplica a un **grupo**, no a un usuario individual. Con esto, cualquier usuario que pertenezca a `docentes` obtiene privilegios de `sudo` automáticamente.
+
+**3.** Guardamos los cambios con `Ctrl + O`, `Enter` y salimos con `Ctrl + X`.
+
+**4.** Confirmamos que la configuración se guardó correctamente:
+
+```bash
+cat /etc/sudoers
+```
+
+![Confirmación del archivo /etc/sudoers guardado](images/d03-cat-etc-sudoers.jpg)
+
+
+> [!WARNING]
+> Editar `/etc/sudoers` directamente con un editor de texto (en vez de con `visudo`) es riesgoso: un error de sintaxis puede dejar el archivo inválido y bloquear el uso de `sudo` en todo el sistema. El propio archivo lo advierte: *"This file must be edited with the 'visudo' command"*. `visudo` valida la sintaxis antes de guardar.
+
+---
+
+## Parte E: Retirar usuarios del grupo pruebas y eliminarlo
+
+**1.** Para quitar un usuario de un grupo (sin eliminar al usuario) se usa `gpasswd -d <usuario> <grupo>`, donde `-d` significa *delete*:
+
+```bash
+gpasswd -d nmontero pruebas
+```
+
+![gpasswd -d para retirar los usuarios del grupo pruebas](images/e01-gpasswd-d-pruebas.jpg)
+
+
+**2.** Repetimos el procedimiento para los seis usuarios del grupo `pruebas`.
+
+**3.** Con el grupo ya sin miembros, lo eliminamos con `groupdel`:
+
+```bash
+groupdel pruebas
+```
+
+![Comando groupdel pruebas](images/e02-groupdel-pruebas.png)
+
+
+**4.** Confirmamos con `cat /etc/group` que el grupo `pruebas` ya no existe.
+
+![Grupo pruebas eliminado en /etc/group](images/e03-cat-etc-group-sin-pruebas.jpg)
+
+
+---
+
+## Parte F: Eliminar un usuario
+
+**1.** Para eliminar un usuario se usa `userdel` seguido del nombre. En este caso, eliminamos a `jirrizarri`:
+
+```bash
+userdel jirrizarri
+```
+
+![Comando userdel jirrizarri](images/f01-userdel-jirrizarri.png)
+
+
+**2.** Confirmamos con `cat /etc/passwd` que el usuario ya no aparece en el sistema.
+
+![Usuario jirrizarri eliminado en /etc/passwd](images/f02-cat-etc-passwd-sin-jirrizarri.jpg)
+
+
+> [!NOTE]
+> `userdel` por sí solo no elimina el directorio *home* del usuario. Para eliminarlo también, se usa `userdel -r <usuario>`.
+
+---
+
+## Parte G: Añadir un usuario a docentes y verificar sudo
+
+**1.** Incorporamos a `nmontero` (uno de los cinco usuarios restantes) al grupo `docentes`:
+
+```bash
+usermod -aG nmontero docentes
+```
+
+![usermod -aG nmontero docentes](images/g01-usermod-nmontero-docentes.jpg)
+
+
+**2.** Confirmamos con `cat /etc/group` que `nmontero` se incorporó correctamente a `docentes`.
+
+![nmontero incorporado al grupo docentes](images/g02-cat-etc-group-nmontero-docentes.png)
+
+
+**3.** Para comprobar que el usuario obtuvo privilegios de `sudo`, primero le asignamos una contraseña con `passwd`:
+
+![Contraseña establecida para nmontero](images/g03-passwd-nmontero.jpg)
+
+
+**4.** Accedemos al usuario con `su - nmontero` (el guion carga también su entorno, no solo la identidad).
+
+![Acceso como el usuario nmontero](images/g04-su-nmontero.jpg)
+
+
+**5.** Verificamos los privilegios de `sudo` con `sudo su`, que eleva la sesión a `root` solicitando la contraseña del propio usuario:
+
+![sudo su confirmando los privilegios de sudoers](images/g05-sudo-su-nmontero.jpg)
+
+
+**6.** Confirmamos el cambio de identidad con `whoami`:
+
+![Comando whoami confirmando root](images/g06-whoami-root.jpg)
+
+
+El resultado `root` confirma que `nmontero` heredó los privilegios de `sudo` al pertenecer al grupo `docentes`, tal como se definió en la Parte D.
+
+---
+
+## Parte H: Cambiar las contraseñas
+
+> [!NOTE]
+> El documento original de esta práctica numera este punto como "Punto i", saltando la letra "h". Se conserva como **Parte H** por orden, ya que es el último punto de la guía.
+
+**1.** Se utiliza el comando `passwd` seguido del nombre de usuario para establecer o cambiar su contraseña. Repetimos el procedimiento para cada uno de los usuarios restantes.
+
+![passwd para amejia, jmarte y jmontero](images/h01-passwd-varios-usuarios.jpg)
+
+![passwd para smontero](images/h02-passwd-smontero.jpg)
+
+
+> [!TIP]
+> El sistema advierte *"BAD PASSWORD: The password is a palindrome"* porque las contraseñas usadas en el laboratorio eran palíndromos (se leen igual al derecho y al revés), un patrón fácil de adivinar. Es solo una advertencia de política de calidad; en RHEL, `root` puede igualmente forzar la contraseña. En un entorno real conviene usar una contraseña robusta y sin patrones predecibles.
+
+---
+
+## Referencia de comandos
+
+| Comando | Función |
+|---|---|
+| `su` | Cambia a otro usuario (por defecto, a `root`) |
+| `su - <usuario>` | Cambia de usuario cargando también su entorno (variables, directorio *home*) |
+| `useradd -m <usuario>` | Crea un usuario con su directorio *home* |
+| `userdel <usuario>` | Elimina un usuario (`-r` elimina también su *home*) |
+| `groupadd <grupo>` | Crea un grupo |
+| `groupdel <grupo>` | Elimina un grupo |
+| `usermod -aG <grupo> <usuario>` | Agrega un usuario a un grupo secundario |
+| `gpasswd -d <usuario> <grupo>` | Retira a un usuario de un grupo |
+| `passwd <usuario>` | Establece o cambia la contraseña de un usuario |
+| `cat /etc/passwd` | Lista los usuarios del sistema |
+| `cat /etc/group` | Lista los grupos del sistema y sus miembros |
+| `nano /etc/sudoers` / `visudo` | Edita los privilegios de `sudo` |
+| `whoami` | Muestra el usuario con el que se está operando actualmente |
+
+---
+
+## Lo aprendido
+
+Esta práctica permitió trabajar el ciclo de vida completo de usuarios y grupos en Linux: creación, agrupación, asignación de privilegios administrativos y eliminación, usando los comandos estándar de administración de RHEL.
+
+Se comprendió la diferencia entre el grupo primario y los grupos secundarios de un usuario (y por qué `usermod -aG` es la forma correcta de añadir un grupo sin reemplazar los existentes), cómo delegar privilegios de `sudo` a nivel de usuario y de grupo mediante `/etc/sudoers`, y por qué ese archivo debería editarse con `visudo` para evitar dejarlo en un estado inválido. También se verificó de forma práctica, con `sudo su` y `whoami`, que la pertenencia a un grupo con privilegios en `sudoers` otorga esos privilegios de forma automática a cualquier usuario que se agregue después.
+
+## Solución de problemas frecuentes
+
+| Problema | Causa probable | Solución |
+|---|---|---|
+| `useradd: user already exists` | El usuario ya fue creado antes | Verificar con `cat /etc/passwd` antes de crearlo de nuevo |
+| El usuario no tiene directorio *home* | Se omitió la bandera `-m` en `useradd` | Volver a crear el usuario con `-m`, o crear el directorio manualmente con `mkhomedir_helper` |
+| `sudo` no reconoce a un usuario recién agregado al grupo | La sesión del usuario es anterior a la actualización del grupo | Cerrar sesión y volver a iniciarla, o usar `su - <usuario>` después del cambio |
+| El archivo `/etc/sudoers` no permite guardar o deja sin acceso a `sudo` | Error de sintaxis al editarlo directamente | Editar siempre con `visudo`, que valida la sintaxis antes de aplicar los cambios |
+| `groupdel` no permite eliminar el grupo | El grupo es el grupo primario de algún usuario | Verificar con `cat /etc/passwd` y cambiar el grupo primario de ese usuario antes de eliminarlo |
+
+---
+
+[← Volver al laboratorio](../README.md)
