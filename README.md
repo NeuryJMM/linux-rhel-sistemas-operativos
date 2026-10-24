@@ -35,6 +35,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 05 | [Scripting en Bash](./05-bash-scripting) | Automatización de tareas administrativas mediante scripts de Bash. |
 | 06 | [VoIP e IaC](./06-voip-iac) | Configuración de un servicio de VoIP y aprovisionamiento de infraestructura mediante IaC. |
 | 07 | [Endurecimiento de SSH, contraseñas y firewall](./07-ssh-password-firewall-hardening) | Restricción del acceso root por SSH, timeout por inactividad, política de contraseñas, expiración y firewall con firewalld. |
+| 08 | [OpenSCAP: PCI-DSS con OpenSCAP y Nessus](./08-openscap-nessus-pcidss) | Auditoría de cumplimiento PCI-DSS con OpenSCAP/SCAP Workbench, verificación cruzada con Nessus, y remediación automática y manual de vulnerabilidades en RHEL. |
 
 ---
 
@@ -74,6 +75,8 @@ linux-rhel-sistemas-operativos/
 ├── 04-storage-partitions/
 ├── 05-bash-scripting/
 ├── 06-voip-iac/
+├── 07-ssh-password-firewall-hardening
+├── 08-openscap-nessus-pcidss/
 ├── LICENSE
 └── README.md
 ```
