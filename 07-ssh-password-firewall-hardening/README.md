@@ -41,6 +41,7 @@ Práctica de endurecimiento (*hardening*) de un sistema RHEL: restricción del a
 - [Parte D: Expiración de contraseñas cada 90 días](#parte-d-expiración-de-contraseñas-cada-90-días)
 - [Parte E: Firewall: solo SSH e ICMP](#parte-e-firewall-solo-ssh-e-icmp)
 - [Referencia de comandos y archivos](#referencia-de-comandos-y-archivos)
+- [Demostración en video](#demostración-en-video)
 - [Lo aprendido](#lo-aprendido)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
@@ -344,6 +345,14 @@ Esta práctica permitió trabajar el endurecimiento de un servidor RHEL desde va
 Se comprendió por qué deshabilitar el acceso remoto de `root` es una práctica estándar de seguridad (obliga a usar una cuenta nominal con `sudo`, lo que mejora la trazabilidad), cómo funciona el mecanismo de *keepalive* de SSH para cerrar sesiones inactivas, y cómo `pwquality.conf` y `login.defs` controlan, respectivamente, la calidad y el ciclo de vida de las contraseñas locales.
 
 El punto del firewall dejó además una lección concreta sobre `firewalld`: el comportamiento por defecto de una zona ya es restrictivo (deniega todo lo que no esté explícitamente permitido), y un parámetro como `icmp-block-inversion` puede producir el efecto contrario al esperado si se activa sin entender que invierte el significado de la lista de bloqueo. Verificar el resultado real de un cambio (por ejemplo, con `firewall-cmd --list-all` o una prueba de `ping`) es tan importante como aplicar el cambio en sí.
+
+## Demostración en video
+
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica:** [Ver demostración en YouTube](https://www.youtube.com/watch?v=NtuHPQcl41I)
+
+---
 
 ## Solución de problemas frecuentes
 
