@@ -8,9 +8,6 @@
 
 Instalación de **Red Hat Enterprise Linux 8.9** en una máquina virtual con VMware Workstation Pro 17. Esta es la base sobre la que se realizan el resto de las prácticas del laboratorio de Linux/RHEL.
 
-> [!NOTE]
-> A diferencia de las demás prácticas de este repositorio, esta no tuvo un How-To escrito por separado: se documentó únicamente con capturas, tomadas como evidencia de la instalación. El procedimiento aquí descrito se reconstruyó a partir de esas capturas.
-
 ## Entorno
 
 | Elemento | Valor |
