@@ -16,7 +16,7 @@
 
 **Linux / RHEL — Sistemas Operativos** reúne los comandos y laboratorios documentados durante los módulos de la materia de Sistemas Operativos, centrados en **Red Hat Enterprise Linux (RHEL)**.
 
-El contenido cubre la administración completa de un sistema Linux: gestión de usuarios y permisos, administración de paquetes y servicios, configuración de redes, almacenamiento y particiones, automatización con Bash, y un acercamiento a VoIP e Infraestructura como Código (IaC).
+El contenido cubre la administración completa de un sistema Linux: gestión de usuarios y permisos, administración de paquetes y servicios, configuración de redes, almacenamiento y particiones, automatización con Bash, cloud computing, contenerización y un acercamiento a VoIP e Infraestructura como Código (IaC).
 
 Cada práctica se documenta con los comandos utilizados, capturas de la terminal como evidencia y una explicación de lo realizado.
 
