@@ -49,6 +49,7 @@ Revisar manualmente cada parámetro de un servidor para detectar fallos o malas 
 - [Análisis de vulnerabilidades no corregidas y remediación manual](#análisis-de-vulnerabilidades-no-corregidas-y-remediación-manual)
 - [Conclusión de la herramienta y del examen](#conclusión-de-la-herramienta-y-del-examen)
 - [Referencia de comandos](#referencia-de-comandos)
+- [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
 ---
@@ -475,7 +476,13 @@ Finalmente, aunque OpenSCAP es una herramienta potente para la remediación auto
 | `sudo aide --init` | Inicializa la base de datos de integridad de AIDE |
 
 ---
+## Demostración en video
 
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo del examen. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica:** [Ver demostración en YouTube](https://www.youtube.com/watch?v=XeZdCIBIb3E)
+
+---
 ## Solución de problemas frecuentes
 
 | Problema | Causa probable | Solución |
