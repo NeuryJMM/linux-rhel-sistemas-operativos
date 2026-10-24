@@ -33,6 +33,7 @@ Cambiar la interfaz de red `ens160` de un direccionamiento automático (DHCP) a 
 - [Parte E: Configurar los servidores DNS](#parte-e-configurar-los-servidores-dns)
 - [Parte F: Guardar y activar los cambios](#parte-f-guardar-y-activar-los-cambios)
 - [Referencia de comandos](#referencia-de-comandos)
+- [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
 ---
@@ -197,6 +198,14 @@ La interfaz `ens160` muestra la dirección `192.168.0.16/24` configurada de form
 | `quit` | Sale del editor interactivo |
 | `ip addr` | Muestra las interfaces de red y sus direcciones IP actuales |
 | `nmtui` | Alternativa con interfaz de texto para configurar la red |
+
+---
+
+## Demostración en video
+
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo del laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica:** [Ver demostración en YouTube](https://www.youtube.com/watch?v=9R5Tt0qDLMA&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=3)
 
 ---
 
