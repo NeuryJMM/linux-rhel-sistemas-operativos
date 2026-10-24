@@ -37,6 +37,7 @@ Instalación y configuración de **ClamAV**, un motor antivirus de código abier
 - [Parte C: Escaneos periódicos con cron](#parte-c-escaneos-periódicos-con-cron)
 - [Parte D: Logs generados por ClamAV](#parte-d-logs-generados-por-clamav)
 - [Referencia de comandos y archivos](#referencia-de-comandos-y-archivos)
+- [Demostración en video](#demostración-en-video)
 - [Lo aprendido](#lo-aprendido)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
@@ -299,6 +300,13 @@ Esta práctica permitió instalar y configurar un antivirus de línea de comando
 
 Se comprendió la diferencia entre `clamscan` (el motor de escaneo) y `freshclam` (el actualizador de firmas), por qué CodeReady Builder debe habilitarse antes que EPEL, la diferencia entre iniciar un servicio (`start`) y dejarlo habilitado de forma permanente (`enable`), y la sintaxis de `cron` para programar tareas recurrentes. También se trabajó con redirección de logs y con las banderas de `clamscan` para mover automáticamente los archivos infectados a cuarentena.
 
+## Demostración en video
+
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica:** [Ver demostración en YouTube](https://www.youtube.com/watch?v=WTApO2vpP38)
+
+---
 ## Solución de problemas frecuentes
 
 | Problema | Causa probable | Solución |
