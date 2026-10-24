@@ -9,9 +9,6 @@
 
 Configuración de una dirección IP estática en una interfaz de red de RHEL, usando el editor interactivo de **`nmcli`** (el cliente de línea de comandos de NetworkManager).
 
-> [!NOTE]
-> Al igual que la práctica de instalación de RHEL, esta no tuvo un How-To escrito por separado: se documentó únicamente con capturas de la terminal, tomadas como evidencia del procedimiento. El texto que acompaña cada paso se reconstruyó a partir de esas capturas.
-
 ## Objetivo
 
 Cambiar la interfaz de red `ens160` de un direccionamiento automático (DHCP) a uno **manual**, asignando una dirección IP, puerta de enlace y servidores DNS fijos.
