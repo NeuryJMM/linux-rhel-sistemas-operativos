@@ -46,12 +46,14 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 
 | Práctica | Demostración |
 |---|---|
+| 00 · Instalación de RHEL 8/9 | [Ver en YouTube](https://www.youtube.com/watch?v=t4zoJVHjXYU&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=4) |
 | 01 · Administración de usuarios y permisos | [Ver en YouTube](https://www.youtube.com/watch?v=8s3UGKai9P4&list=PLIJEt4hLYnOUAQxFim_nNNvPqBw8Z8VKT) |
 | 02 · Antivirus ClamAV | [Ver en YouTube](https://www.youtube.com/watch?v=WTApO2vpP38) |
+| 03 · Redes en Linux | [Ver en YouTube](https://www.youtube.com/watch?v=9R5Tt0qDLMA&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=3) |
 | 07 · Endurecimiento de SSH, contraseñas y firewall | [Ver en YouTube](https://www.youtube.com/watch?v=NtuHPQcl41I) |
 | 08 · Examen Final: PCI-DSS con OpenSCAP y Nessus | [Ver en YouTube](https://www.youtube.com/watch?v=XeZdCIBIb3E) |
 
-Las demostraciones de las prácticas 03 a 06 se agregarán cuando estén disponibles.
+Las demostraciones de las prácticas 04, 05 y 06 se agregarán cuando estén disponibles.
 
 ---
 
