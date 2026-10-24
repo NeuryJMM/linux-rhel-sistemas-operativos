@@ -46,10 +46,11 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | Práctica | Demostración |
 |---|---|
 | 01 · Administración de usuarios y permisos | [Ver en YouTube](https://www.youtube.com/watch?v=8s3UGKai9P4&list=PLIJEt4hLYnOUAQxFim_nNNvPqBw8Z8VKT) |
+| 02 · Antivirus ClamAV | [Ver en YouTube](https://www.youtube.com/watch?v=WTApO2vpP38) |
+| 07 · Endurecimiento de SSH, contraseñas y firewall | [Ver en YouTube](https://www.youtube.com/watch?v=NtuHPQcl41I) |
+| 08 · Examen Final: PCI-DSS con OpenSCAP y Nessus | [Ver en YouTube](https://www.youtube.com/watch?v=XeZdCIBIb3E) |
 
-Las demostraciones de las prácticas 02 a 06 se agregarán cuando estén disponibles.
-
-Las prácticas incluyen, según corresponda, comandos, capturas de pantalla, resultados de validación y solución de problemas.
+Las demostraciones de las prácticas 03 a 06 se agregarán cuando estén disponibles.
 
 ---
 
