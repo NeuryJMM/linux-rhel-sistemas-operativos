@@ -399,8 +399,8 @@ Se comprendió la diferencia entre el grupo primario y los grupos secundarios de
 
 Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
 
-**Video de la práctica:** [Ver demostración en YouTube](https://www.youtube.com/watch?v=8s3UGKai9P4&list=PLIJEt4hLYnOUAQxFim_nNNvPqBw8Z8VKT)
-
+**Video de la práctica (PRIMERA PARTE):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=8s3UGKai9P4&list=PLIJEt4hLYnOUAQxFim_nNNvPqBw8Z8VKT)
+**Video de la práctica (SEGUNDA PARTE):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=0q4Phl2d24I&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=2)
 ---
 
 ## Solución de problemas frecuentes
