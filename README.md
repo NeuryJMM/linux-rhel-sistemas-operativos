@@ -28,6 +28,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 
 | # | Práctica | Tecnologías y alcance |
 |:--:|---|---|
+| 00 | [Instalación de RHEL 8/9](./00-instalacion-rhel) | Instalación de Red Hat Enterprise Linux 8.9 en VMware Workstation Pro 17. |
 | 01 | [Administración de usuarios y permisos](./01-user-group-management) | Creación y gestión de usuarios y grupos en RHEL, privilegios de `sudo` vía `/etc/sudoers`, eliminación y administración de contraseñas. |
 | 02 | [Gestión de paquetes y servicios](./02-package-service-management) | Administración de paquetes y gestión de servicios con `systemctl` en RHEL. |
 | 03 | [Redes en Linux](./03-linux-networking) | Configuración y diagnóstico de redes: interfaces, direccionamiento IP, rutas y herramientas de diagnóstico. |
@@ -70,6 +71,7 @@ Las demostraciones de las prácticas 03 a 06 se agregarán cuando estén disponi
 
 ```text
 linux-rhel-sistemas-operativos/
+├── 00-instalacion-rhel/
 ├── 01-user-group-management/
 ├── 02-package-service-management/
 ├── 03-linux-networking/
