@@ -8,7 +8,7 @@
 ![PCI-DSS](https://img.shields.io/badge/Compliance-PCI--DSS-8b5cf6?style=flat-square)
 ![Estado](https://img.shields.io/badge/Estado-Completado-34d399?style=flat-square)
 
-Examen final de la materia de Sistemas Operativos: implementación de **OpenSCAP** para auditar el cumplimiento de un servidor RHEL con el estándar **PCI-DSS**, uso de **Nessus** como segunda capa de verificación de vulnerabilidades, y remediación automatizada y manual de los hallazgos encontrados.
+Examen final de la materia de Seguridad de Sistemas Operativos: implementación de **OpenSCAP** para auditar el cumplimiento de un servidor RHEL con el estándar **PCI-DSS**, uso de **Nessus** como segunda capa de verificación de vulnerabilidades, y remediación automatizada y manual de los hallazgos encontrados.
 
 ## Introducción
 
