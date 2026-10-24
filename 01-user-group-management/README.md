@@ -368,6 +368,126 @@ groupdel guest
 ![Eliminación del usuario Pablo y el grupo guest](images/comp09-userdel-groupdel.jpg)
 
 ---
+## Demostración complementaria: permisos de archivos con chmod
+
+Esta demostración trabaja la otra mitad del tema de la práctica: los **permisos sobre archivos**, usando la notación simbólica de `chmod` (en vez de la numérica), junto con operaciones básicas de archivos y directorios.
+
+**1.** Creamos un directorio de trabajo y un archivo de texto, y lo abrimos con el editor `vi`:
+
+```bash
+cd Desktop
+mkdir materia
+cd materia
+touch estudiante.txt
+vi estudiante.txt
+```
+
+![Creación del directorio y el archivo](images/comp10-crear-archivo-vi.jpg)
+
+**2.** Dentro de `vi`, escribimos un par de líneas de contenido y guardamos:
+
+```text
+Neury Jorge Montero Mejia
+2025-0829
+```
+
+![Contenido escrito con vi](images/comp11-contenido-vi.png)
+
+**3.** Revisamos el contenido con `cat` (que lo muestra en orden normal) y con `tac` (que lo muestra con las líneas en orden inverso, de ahí su nombre: "cat" al revés):
+
+```bash
+cat estudiante.txt
+tac estudiante.txt
+```
+
+Después, cambiamos a la cuenta de `root` con `su` y revisamos los permisos actuales del archivo con `ls -l`:
+
+```bash
+su
+ls -l
+```
+
+![cat, tac, cambio a root y permisos iniciales](images/comp12-cat-tac-su-permisos.jpg)
+
+Los permisos iniciales del archivo son `-rw-rw-r--`: lectura y escritura para el propietario y el grupo, y solo lectura para el resto.
+
+> [!NOTE]
+> En la captura, el primer intento de `su` falla con *"Authentication failure"* antes de tener éxito en el segundo intento, por una contraseña mal escrita.
+
+**4.** Modificamos los permisos con `chmod`, usando la notación **simbólica** (`u` para el propietario, `g` para el grupo, `o` para el resto, `+`/`-` para agregar o quitar permisos):
+
+```bash
+chmod 700 estudiante.txt
+ls -l
+```
+```text
+-rwx------
+```
+
+```bash
+chmod 000 estudiante.txt
+chmod g+rwx estudiante.txt
+ls -l
+```
+```text
+----rwx---
+```
+
+```bash
+chmod u+rwx estudiante.txt
+ls -l
+```
+```text
+-rwxrwx---
+```
+
+![Cambios de permisos con chmod en notación simbólica](images/comp13-chmod-simbolico.jpg)
+
+> [!TIP]
+> `chmod 700` usa notación **numérica** (lectura=4, escritura=2, ejecución=1, sumados por cada grupo: propietario/grupo/otros). Los pasos siguientes usan notación **simbólica** (`u`, `g`, `o`, `a` + `+`/`-`/`=` + `r`/`w`/`x`), que es más práctica para modificar un solo permiso sin tener que recalcular el número completo cada vez.
+
+**5.** Creamos un segundo directorio y copiamos el archivo hacia él con `cp`:
+
+```bash
+mkdir materia2
+ls
+cd materia2
+cp materia/estudiante.txt materia2
+```
+
+El primer intento falla (`cannot stat 'materia/estudiante.txt'`), porque ya estábamos dentro de `materia2`, así que la ruta relativa `materia/estudiante.txt` no existe ahí.
+
+```bash
+cd ..
+cp materia/estudiante.txt materia2
+cd materia2
+ls
+```
+
+Repitiéndolo desde `Desktop` (un nivel arriba), la ruta relativa sí es correcta y la copia funciona.
+
+![Copia de archivos y corrección de una ruta relativa incorrecta](images/comp14-cp-rutas-relativas.jpg)
+
+**6.** Para terminar, intentamos ver el archivo con un nombre mal escrito, lo corregimos, y eliminamos el directorio original (`materia`) de forma recursiva con `rm -r`:
+
+```bash
+cat estudiate.txt
+```
+```text
+cat: estudiate.txt: No such file or directory
+```
+
+```bash
+cat estudiante.txt
+cd ..
+rm -r materia
+```
+
+`rm -r` pregunta por cada elemento antes de eliminarlo (el directorio y el archivo que contiene). Confirmamos con `yes` en cada caso.
+
+![Corrección del nombre del archivo y eliminación recursiva del directorio](images/comp15-rm-r-materia.jpg)
+
+---
 
 ## Referencia de comandos
 
@@ -402,6 +522,8 @@ Esta práctica cuenta con una demostración en video donde se muestra el proceso
 **Video de la práctica (PRIMERA PARTE):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=8s3UGKai9P4&list=PLIJEt4hLYnOUAQxFim_nNNvPqBw8Z8VKT)
 
 **Video de la práctica (DEMOSTRACIÓN COMPLEMENTARIA):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=0q4Phl2d24I&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=2)
+
+**Video de la práctica (SEGUNDA DEMOSTRACIÓN COMPLEMENTARIA):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=pkG0VfYP414&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=1)
 
 ---
 
