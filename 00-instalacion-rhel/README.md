@@ -21,6 +21,7 @@ Instalación de **Red Hat Enterprise Linux 8.9** en una máquina virtual con VMw
 - [Parte A: Crear la máquina virtual](#parte-a-crear-la-máquina-virtual)
 - [Parte B: Arrancar e instalar RHEL](#parte-b-arrancar-e-instalar-rhel)
 - [Parte C: Primer inicio del sistema](#parte-c-primer-inicio-del-sistema)
+- [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
 ---
@@ -97,6 +98,14 @@ Instalación de **Red Hat Enterprise Linux 8.9** en una máquina virtual con VMw
 
 ![Escritorio de Red Hat Enterprise Linux 8 tras el primer inicio](images/c02-escritorio-rhel.jpg)
 
+
+---
+
+## Demostración en video
+
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo del laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica:** [Ver demostración en YouTube](https://www.youtube.com/watch?v=t4zoJVHjXYU&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=4)
 
 ---
 
