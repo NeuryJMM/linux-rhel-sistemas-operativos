@@ -281,6 +281,93 @@ El resultado `root` confirma que `nmontero` heredó los privilegios de `sudo` al
 > El sistema advierte *"BAD PASSWORD: The password is a palindrome"* porque las contraseñas usadas en el laboratorio eran palíndromos (se leen igual al derecho y al revés), un patrón fácil de adivinar. Es solo una advertencia de política de calidad; en RHEL, `root` puede igualmente forzar la contraseña. En un entorno real conviene usar una contraseña robusta y sin patrones predecibles.
 
 ---
+## Demostración complementaria: sudoers con visudo
+
+Esta demostración adicional repite el flujo de usuarios, grupos y privilegios de `sudo`, pero usando **`visudo`** en vez de `nano` para editar `/etc/sudoers`, tal como se recomendó en la Parte D.
+
+**1.** Creamos un usuario y le asignamos una contraseña:
+
+```bash
+adduser Neury
+passwd Neury
+```
+
+Para editar los privilegios de `sudo`, en vez de abrir el archivo directamente con un editor de texto, usamos `visudo`:
+
+```bash
+sudo visudo
+```
+
+![Creación de usuario, contraseña y apertura de visudo](images/comp01-adduser-passwd-visudo.jpg)
+
+**2.** `visudo` abre el archivo `/etc/sudoers` en un editor (por defecto, `vi`), con sus comentarios explicativos sobre la sintaxis y las secciones predefinidas (`%wheel`, `%users`, etc.).
+
+![Contenido de /etc/sudoers abierto con visudo](images/comp02-visudo-contenido.jpg)
+
+**3.** Al final del archivo, agregamos una línea otorgando privilegios completos al usuario `Neury`, siguiendo el mismo formato que la línea de `root`:
+
+```text
+root   ALL=(ALL)     ALL
+Neury  ALL=(ALL)     ALL
+```
+
+![Entrada de privilegios para Neury](images/comp03-visudo-entrada-neury.png)
+
+**4.** Guardamos y salimos con la combinación de `vi`: `Esc` y `:wq`.
+
+![Guardar y salir de visudo con :wq](images/comp04-visudo-guardar.png)
+
+> [!TIP]
+> `visudo` bloquea el archivo mientras se edita (evitando que dos personas lo editen a la vez) y, lo más importante, **valida la sintaxis antes de guardar**. Si hay un error, avisa y permite corregirlo antes de aplicar el cambio, en vez de dejar el archivo roto como podría pasar al editarlo directamente con `nano`.
+
+**5.** Verificamos el acceso del nuevo usuario con `su -` (que carga también su entorno), y volvemos a la sesión original con `exit`:
+
+```bash
+su - Neury
+exit
+```
+
+![Cambio de sesión al usuario Neury y regreso](images/comp05-su-neury.jpg)
+
+### Grupo adicional: guest
+
+**6.** Creamos un segundo usuario (`Pablo`), un grupo (`guest`) y agregamos a `Pablo` como miembro secundario del grupo:
+
+```bash
+adduser Pablo
+groupadd guest
+usermod -aG guest Pablo
+cat /etc/group
+```
+
+![Comandos para crear Pablo y el grupo guest](images/comp06-comandos-pablo-guest.jpg)
+
+El resultado confirma que `guest` quedó creado con `Pablo` como miembro:
+
+![Resultado de /etc/group con guest y Pablo](images/comp07-etc-group-resultado.jpg)
+
+**7.** Para confirmar un grupo específico sin revisar el archivo completo, se puede filtrar la salida con `grep`:
+
+```bash
+cat /etc/group | grep guest
+```
+
+```text
+guest:x:1003:Pablo
+```
+
+![Filtrado con grep para confirmar el grupo guest](images/comp08-grep-guest.jpg)
+
+**8.** Para limpiar el entorno, eliminamos el usuario y el grupo creados:
+
+```bash
+userdel Pablo
+groupdel guest
+```
+
+![Eliminación del usuario Pablo y el grupo guest](images/comp09-userdel-groupdel.jpg)
+
+---
 
 ## Referencia de comandos
 
