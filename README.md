@@ -51,7 +51,7 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 02 · Antivirus ClamAV | [Ver en YouTube](https://www.youtube.com/watch?v=WTApO2vpP38) |
 | 03 · Redes en Linux | [Ver en YouTube](https://www.youtube.com/watch?v=9R5Tt0qDLMA&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=3) |
 | 07 · Endurecimiento de SSH, contraseñas y firewall | [Ver en YouTube](https://www.youtube.com/watch?v=NtuHPQcl41I) |
-| 08 · Examen Final: PCI-DSS con OpenSCAP y Nessus | [Ver en YouTube](https://www.youtube.com/watch?v=XeZdCIBIb3E) |
+| 08 · OpenSCAP: PCI-DSS con OpenSCAP y Nessus | [Ver en YouTube](https://www.youtube.com/watch?v=XeZdCIBIb3E) |
 
 Las demostraciones de las prácticas 04, 05 y 06 se agregarán cuando estén disponibles.
 
