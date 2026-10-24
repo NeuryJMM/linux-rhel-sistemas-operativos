@@ -521,9 +521,9 @@ Esta práctica cuenta con una demostración en video donde se muestra el proceso
 
 **Video de la práctica (PRIMERA PARTE):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=8s3UGKai9P4&list=PLIJEt4hLYnOUAQxFim_nNNvPqBw8Z8VKT)
 
-**Video de la práctica (DEMOSTRACIÓN COMPLEMENTARIA):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=0q4Phl2d24I&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=2)
+**Video de la demostración complementaria (sudoers con visudo):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=0q4Phl2d24I&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=2)
 
-**Video de la práctica (SEGUNDA DEMOSTRACIÓN COMPLEMENTARIA):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=pkG0VfYP414&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=1)
+**Video de la segunda demostración complementaria (permisos con chmod):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=pkG0VfYP414&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=1)
 
 ---
 
