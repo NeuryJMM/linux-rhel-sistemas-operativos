@@ -37,6 +37,7 @@ Instalación y configuración de **ClamAV**, un motor antivirus de código abier
 - [Parte C: Escaneos periódicos con cron](#parte-c-escaneos-periódicos-con-cron)
 - [Parte D: Logs generados por ClamAV](#parte-d-logs-generados-por-clamav)
 - [Referencia de comandos y archivos](#referencia-de-comandos-y-archivos)
+- [Demostración complementaria: actualización de repositorios e instalación manual de herramientas](#demostración-complementaria-actualización-de-repositorios-e-instalación-manual-de-herramientas)
 - [Demostración en video](#demostración-en-video)
 - [Lo aprendido](#lo-aprendido)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
@@ -305,6 +306,138 @@ Se comprendió la diferencia entre `clamscan` (el motor de escaneo) y `freshclam
 Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
 
 **Video de la práctica:** [Ver demostración en YouTube](https://www.youtube.com/watch?v=WTApO2vpP38)
+
+## Demostración complementaria: actualización de repositorios e instalación manual de herramientas
+
+Esta demostración trabaja dos cosas: mantener los repositorios del sistema al día, y qué hacer cuando una herramienta **no** está disponible en ellos.
+
+### Actualizar los repositorios
+
+**1.** Actualizamos los paquetes con `dnf update`:
+
+```bash
+dnf update
+```
+
+Se muestra el resumen de instalación/actualización y se confirma con `y`.
+
+![dnf update y resumen de paquetes](images/comp01-dnf-update.jpg)
+![Resumen de la transacción](images/comp02-paquetes-resumen.jpg)
+
+Durante el proceso, `dnf` importa las llaves GPG de Red Hat (necesarias para verificar la autenticidad de los paquetes) y ejecuta la transacción.
+
+![Importación de llaves GPG y transacción completada](images/comp03-gpg-transaccion.jpg)
+
+**2.** De forma similar, `dnf upgrade` actualiza los paquetes instalados a su versión más reciente disponible en los repositorios:
+
+```bash
+dnf upgrade
+```
+
+![dnf upgrade](images/comp04-dnf-upgrade.jpg)
+
+> [!NOTE]
+> `dnf update` y `dnf upgrade` son, en la práctica, equivalentes en la mayoría de los casos; `upgrade` es el nombre más explícito, mientras que `update` se mantiene por compatibilidad con versiones anteriores de la herramienta (`yum`).
+
+### Explorar los repositorios configurados
+
+**3.** Listamos los repositorios habilitados:
+
+```bash
+dnf repolist
+```
+
+Se muestran los repositorios activos por defecto: **AppStream** y **BaseOS**.
+
+![dnf repolist: AppStream y BaseOS](images/comp05-repolist.jpg)
+
+**4.** Para ver **todos** los repositorios disponibles, incluidos los deshabilitados (como los de depuración y código fuente):
+
+```bash
+dnf repolist all
+```
+
+![Comando dnf repolist all](images/comp06-repolist-all-comando.png)
+![Listado completo de repositorios, habilitados y deshabilitados](images/comp07-repolist-all-completo.jpg)
+
+### Instalar una herramienta que no está en los repositorios
+
+**5.** Buscamos una herramienta (en este caso, **Bashtop**, un monitor de sistema para la terminal) en los repositorios configurados:
+
+```bash
+dnf search bashtop
+```
+
+```text
+No matches found.
+```
+
+![dnf search bashtop sin resultados](images/comp08-dnf-search-bashtop.jpg)
+
+**6.** Como no está disponible por `dnf`, la obtenemos directamente desde su repositorio en GitHub con `git clone` (si `git` no está instalado, `dnf` ofrece instalarlo automáticamente en el momento):
+
+```bash
+git clone https://github.com/aristocratos/bashtop.git
+```
+
+![Instalación de git-core y clonado del repositorio](images/comp09-git-clone-bashtop.jpg)
+
+**7.** Entramos a la carpeta clonada y revisamos su contenido:
+
+```bash
+cd bashtop
+ls
+```
+
+![Contenido del repositorio clonado](images/comp10-cd-ls-bashtop.jpg)
+
+**8.** Ejecutamos Bashtop directamente, sin necesidad de instalarlo como paquete:
+
+```bash
+./bashtop
+```
+
+Al iniciar, realiza una serie de verificaciones (herramientas disponibles, CPU, dispositivos de red, actualizaciones).
+
+![Pantalla de inicio de Bashtop](images/comp11-bashtop-splash.jpg)
+
+**9.** Bashtop se ejecuta como un monitor de sistema interactivo en la terminal (CPU, memoria, disco, red y procesos):
+
+![Bashtop en ejecución](images/comp12-bashtop-ejecucion.jpg)
+
+**10.** Presionando `Esc`, se accede al menú de opciones (tema de color, orden de procesos, intervalo de actualización, entre otros):
+
+![Menú de opciones de Bashtop](images/comp13-bashtop-opciones.jpg)
+
+### Limpieza
+
+**11.** Como Bashtop no se instaló mediante `dnf`, `dnf autoremove` no lo reconoce como un paquete que pueda desinstalar:
+
+```bash
+cd ..
+dnf autoremove bashtop
+```
+
+```text
+No match for argument: bashtop
+```
+
+Por eso, se elimina manualmente la carpeta clonada con `rm -r`, que confirma la eliminación de cada archivo:
+
+```bash
+rm -r bashtop
+```
+
+![Limpieza manual de la carpeta clonada](images/comp14-limpieza-rm.jpg)
+
+**12.** Por último, limpiamos la caché local de paquetes de `dnf`:
+
+```bash
+dnf clean all
+```
+
+![dnf clean all](images/comp15-dnf-clean-all.jpg)
+
 
 ---
 ## Solución de problemas frecuentes
