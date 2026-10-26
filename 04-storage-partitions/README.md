@@ -9,8 +9,6 @@
 
 Gestión de almacenamiento en RHEL de principio a fin: se agrega un disco virtual nuevo a la máquina virtual, se crea una partición con `fdisk`, se formatea con el sistema de archivos `ext4`, y se monta en distintos puntos del sistema de archivos.
 
-> [!NOTE]
-> Al igual que otras prácticas de este repositorio, esta no tuvo un How-To escrito por separado: se documentó únicamente con capturas de la terminal y del hipervisor, tomadas como evidencia del procedimiento.
 
 ## Objetivo
 
