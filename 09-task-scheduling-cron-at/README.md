@@ -9,8 +9,6 @@
 
 Programación de tareas automáticas en RHEL con dos mecanismos complementarios: **`cron`**, para tareas recurrentes (a nivel de sistema y a nivel de usuario), y **`at`**, para tareas que se ejecutan una única vez en un momento futuro.
 
-> [!NOTE]
-> Al igual que las prácticas de instalación de RHEL y configuración de red, esta no tuvo un How-To escrito por separado: se documentó únicamente con capturas de la terminal, tomadas como evidencia del procedimiento.
 
 ## Objetivo
 
