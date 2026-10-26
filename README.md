@@ -37,6 +37,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 06 | [VoIP e IaC](./06-voip-iac) | Configuración de un servicio de VoIP y aprovisionamiento de infraestructura mediante IaC. |
 | 07 | [Endurecimiento de SSH, contraseñas y firewall](./07-ssh-password-firewall-hardening) | Restricción del acceso root por SSH, timeout por inactividad, política de contraseñas, expiración y firewall con firewalld. |
 | 08 | [OpenSCAP: PCI-DSS con OpenSCAP y Nessus](./08-openscap-nessus-pcidss) | Auditoría de cumplimiento PCI-DSS con OpenSCAP/SCAP Workbench, verificación cruzada con Nessus, y remediación automática y manual de vulnerabilidades en RHEL. |
+| 09 | [Administración de tareas con cron y at](./09-task-scheduling-cron-at) | Tareas recurrentes con crontab (sistema y usuario) y tareas de ejecución única con at. |
 
 ---
 
