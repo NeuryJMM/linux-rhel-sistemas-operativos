@@ -9,8 +9,6 @@
 
 Personalización del menú de arranque **GRUB2** y recuperación de la contraseña de `root` mediante el modo de emergencia (`rd.break`), un procedimiento estándar de administración de sistemas para cuando se pierde el acceso a la cuenta de superusuario.
 
-> [!NOTE]
-> Al igual que otras prácticas de este repositorio, esta no tuvo un How-To escrito por separado: se documentó únicamente con capturas de la terminal, tomadas como evidencia del procedimiento. Una captura incluía, por superposición de la grabación de pantalla, la imagen de la cámara web; se recortó esa parte antes de publicarla aquí.
 
 > [!IMPORTANT]
 > Este procedimiento **requiere acceso físico o de consola** a la máquina (poder reiniciarla y editar el menú de arranque). No es un método de ataque remoto: es, precisamente, la razón por la que la seguridad física de los servidores importa tanto como la de red. Se documenta aquí como una habilidad legítima de administración: es el procedimiento oficial de Red Hat para recuperar el acceso a un sistema cuando se olvida la contraseña de `root`.
