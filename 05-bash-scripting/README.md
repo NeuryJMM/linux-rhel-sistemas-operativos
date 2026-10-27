@@ -9,8 +9,6 @@
 
 Dos scripts de Bash que automatizan tareas de administración habituales: uno genera un respaldo comprimido del directorio personal con la fecha en el nombre del archivo, y el otro guarda la configuración de red en un archivo de texto con un nombre elegido por el usuario.
 
-> [!NOTE]
-> Al igual que otras prácticas de este repositorio, esta no tuvo un How-To escrito por separado: se documentó únicamente con capturas de la terminal, tomadas como evidencia del procedimiento.
 
 ## Entorno
 
