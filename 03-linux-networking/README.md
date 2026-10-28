@@ -33,6 +33,7 @@ Cambiar la interfaz de red `ens160` de un direccionamiento automático (DHCP) a 
 - [Parte E: Configurar los servidores DNS](#parte-e-configurar-los-servidores-dns)
 - [Parte F: Guardar y activar los cambios](#parte-f-guardar-y-activar-los-cambios)
 - [Referencia de comandos](#referencia-de-comandos)
+- [Demostración complementaria: servicio SSH entre RHEL y Windows](#demostración-complementaria-servicio-ssh-entre-rhel-y-windows)
 - [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
@@ -182,6 +183,111 @@ ip addr
 
 
 La interfaz `ens160` muestra la dirección `192.168.0.16/24` configurada de forma estática, en lugar de la que asignaba el servidor DHCP.
+
+---
+## Demostración complementaria: servicio SSH entre RHEL y Windows
+
+Esta demostración configura el servicio SSH en el servidor RHEL y establece una conexión remota desde un cliente Windows, primero con contraseña y después con autenticación por clave pública (sin contraseña).
+
+### Preparar la conectividad
+
+**1.** En la configuración de la máquina virtual, el adaptador de red está en modo **Bridged (Automatic)**: conecta la VM directamente a la red física, para que reciba una IP en la misma red que el equipo Windows (el host).
+
+![Adaptador de red en modo Bridged](images/comp01-vm-network-bridged.jpg)
+
+**2.** En RHEL, revisamos las interfaces de red y sus direcciones:
+
+```bash
+ip a
+```
+
+La interfaz `ens160` tiene la dirección `192.168.0.16/24`.
+
+![ip a: interfaces de red de RHEL](images/comp02-ip-a-interfaces.png)
+
+**3.** Desde Windows, confirmamos la conectividad con un `ping`:
+
+```cmd
+ping 192.168.0.16
+```
+
+![ping exitoso desde Windows](images/comp03-ping-windows.jpg)
+
+### Instalar y activar el servicio SSH
+
+**4.** En RHEL, instalamos el servidor SSH (en este caso ya estaba instalado) y activamos el servicio:
+
+```bash
+sudo dnf install openssh-server
+sudo systemctl start sshd
+sudo systemctl enable sshd
+```
+
+![Instalación y activación del servicio sshd](images/comp04-dnf-install-sshd.jpg)
+
+**5.** Verificamos que el servicio esté activo:
+
+```bash
+sudo systemctl status sshd
+```
+
+![sshd activo y escuchando en el puerto 22](images/comp05-systemctl-status-sshd.jpg)
+
+### Primera conexión, con contraseña
+
+**6.** Desde Windows, nos conectamos por SSH indicando el usuario y la IP del servidor:
+
+```cmd
+ssh nmontero@192.168.0.16
+```
+
+Se solicita la contraseña del usuario y, al ingresarla correctamente, se inicia la sesión remota.
+
+![Primer inicio de sesión SSH, con contraseña](images/comp06-ssh-primer-login.jpg)
+
+### Autenticación por clave pública (sin contraseña)
+
+**7.** Cerramos la sesión y, ya en Windows, generamos un par de claves SSH con `ssh-keygen`, usando el algoritmo **ed25519** (sin contraseña en la clave, para esta demostración):
+
+```cmd
+ssh-keygen -t ed25519
+```
+
+![Generación del par de claves en Windows](images/comp07-ssh-keygen-windows.jpg)
+
+**8.** Abrimos la clave **pública** generada con el Bloc de notas, para copiar su contenido:
+
+```cmd
+notepad C:\Users\USER\.ssh\id_ed25519.pub
+```
+
+![Apertura de la clave pública con el Bloc de notas](images/comp08-notepad-pub-key.jpg)
+
+La clave pública es justamente la parte diseñada para compartirse; no representa ningún riesgo exponerla.
+
+![Contenido de la clave pública](images/comp09-contenido-clave-publica.jpg)
+
+**9.** En el servidor RHEL, pegamos esa clave pública en el archivo `authorized_keys` del usuario:
+
+```bash
+cd .ssh
+sudo nano authorized_keys
+```
+
+![Edición de authorized_keys](images/comp10-nano-authorized-keys.jpg)
+
+![Clave pública pegada en authorized_keys](images/comp11-authorized-keys-contenido.jpg)
+
+**10.** Desde Windows, nos conectamos de nuevo por SSH. Esta vez, el acceso se concede **sin pedir contraseña**: el servidor reconoce la clave pública registrada en `authorized_keys` y verifica la identidad del cliente mediante su clave privada correspondiente.
+
+```cmd
+ssh nmontero@192.168.0.16
+```
+
+![Acceso SSH exitoso sin solicitar contraseña](images/comp12-ssh-login-sin-contrasena.jpg)
+
+> [!NOTE]
+> La autenticación por clave pública es más segura que la autenticación por contraseña: no viaja ninguna contraseña por la red, y es prácticamente inmune a ataques de fuerza bruta (la clave privada nunca sale del equipo cliente). En entornos de producción, una buena práctica adicional es deshabilitar por completo la autenticación por contraseña en `/etc/ssh/sshd_config` (`PasswordAuthentication no`) una vez que las claves están configuradas, para forzar que todo el acceso remoto use claves.
 
 ---
 
