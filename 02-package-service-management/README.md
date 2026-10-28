@@ -38,6 +38,7 @@ Instalación y configuración de **ClamAV**, un motor antivirus de código abier
 - [Parte D: Logs generados por ClamAV](#parte-d-logs-generados-por-clamav)
 - [Referencia de comandos y archivos](#referencia-de-comandos-y-archivos)
 - [Demostración complementaria: actualización de repositorios e instalación manual de herramientas](#demostración-complementaria-actualización-de-repositorios-e-instalación-manual-de-herramientas)
+- [Segunda demostración complementaria: servidor web Apache (httpd)](#segunda-demostración-complementaria-servidor-web-apache-httpd)
 - [Demostración en video](#demostración-en-video)
 - [Lo aprendido](#lo-aprendido)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
@@ -440,6 +441,197 @@ dnf clean all
 
 
 ---
+## Segunda demostración complementaria: servidor web Apache (httpd)
+
+Esta demostración instala y configura el servidor web **Apache (`httpd`)** en RHEL, con dos sitios distintos sirviéndose desde el mismo servidor: uno en el puerto estándar (80) y otro en un puerto adicional (8080), cada uno con su propio dominio local y su propio contenido.
+
+### Instalar y activar Apache
+
+**1.** Instalamos el paquete `httpd`:
+
+```bash
+dnf install httpd
+```
+
+![Comando dnf install httpd](images/a01-dnf-install-httpd.jpg)
+
+Se instalan, además del propio `httpd`, sus dependencias (`apr`, `apr-util`, `httpd-filesystem`, `mod_http2`, `redhat-logos-httpd`, entre otras).
+
+![Paquetes a instalar: httpd y sus dependencias](images/a02-paquetes-httpd.png)
+
+**2.** Habilitamos el servicio para que inicie automáticamente con el sistema, lo iniciamos, y verificamos su estado:
+
+```bash
+systemctl enable httpd
+systemctl start httpd
+systemctl status httpd
+```
+
+El servicio queda **activo (running)**, escuchando en el puerto 80.
+
+![systemctl enable, start y status de httpd](images/a03-enable-start-status.png)
+
+> [!NOTE]
+> El mensaje `AH00558: httpd: Could not reliably determine the server's fully qualified domain name` es una advertencia común y no impide que el servicio funcione: indica que Apache no pudo determinar automáticamente el nombre de dominio completo del servidor, y usa una dirección por defecto mientras tanto. Se resuelve configurando la directiva `ServerName` en `httpd.conf`.
+
+### Primer sitio: hola.localhost (puerto 80)
+
+**3.** Creamos el directorio para el contenido del primer sitio y un archivo `index.html`:
+
+```bash
+cd /var/www/html
+mkdir hola
+cd ./hola
+nano index.html
+```
+
+![mkdir hola y nano index.html](images/b01-crear-hola-index.jpg)
+
+**4.** Contenido del archivo:
+
+```html
+<!DOCTYPE html>
+<html>
+<head><title>Hola Mundo</title></head>
+<body>
+<h1>Hola Mundo</h1>
+</body>
+</html>
+```
+
+![Contenido de index.html para hola.localhost](images/b02-hola-index-contenido.png)
+
+**5.** Editamos la configuración principal de Apache:
+
+```bash
+nano /etc/httpd/conf/httpd.conf
+```
+
+![Comando nano /etc/httpd/conf/httpd.conf](images/b03-nano-httpd-conf.jpg)
+
+El archivo trae, por defecto, varias secciones comentadas con su explicación (por ejemplo, sobre `EnableMMAP` y `EnableSendfile`).
+
+![Configuración por defecto de httpd.conf](images/b04-httpd-conf-inicio.jpg)
+
+Al final del archivo, agregamos un bloque `VirtualHost` que asocia el dominio `hola.localhost` con la carpeta `hola` creada antes:
+
+```apache
+<VirtualHost *:80>
+  ServerName hola.localhost
+  DocumentRoot "/var/www/html/hola"
+  ServerAdmin root@localhost
+</VirtualHost>
+```
+
+**6.** Para que el nombre `hola.localhost` se resuelva hacia el propio equipo, lo agregamos a `/etc/hosts`:
+
+```bash
+nano /etc/hosts
+```
+
+![Comando nano /etc/hosts](images/b05-nano-etc-hosts.png)
+
+```text
+127.0.0.1   hola.localhost
+```
+
+![/etc/hosts con hola.localhost agregado](images/b06-etc-hosts-hola.jpg)
+
+**7.** Reiniciamos el servicio para aplicar los cambios:
+
+```bash
+systemctl restart httpd
+```
+
+![systemctl restart httpd](images/b07-systemctl-restart-httpd.png)
+
+**8.** Ingresamos a `http://hola.localhost` desde el navegador: se muestra la página creada.
+
+![hola.localhost mostrando Hola Mundo en el navegador](images/b08-navegador-hola-mundo.jpg)
+
+### Segundo sitio: estudiante.localhost (puerto 8080)
+
+**9.** Repetimos el procedimiento para un segundo sitio, esta vez sirviéndose en el puerto **8080**. Creamos su directorio y su `index.html`:
+
+```bash
+cd /var/www/html
+mkdir estudiante
+cd ./estudiante
+nano index.html
+```
+
+![mkdir estudiante y nano index.html](images/c01-crear-estudiante-index.jpg)
+
+**10.** Contenido del archivo, con información del estudiante:
+
+```html
+<!DOCTYPE html>
+<html>
+<head><title>Estudiante</title></head>
+<body>
+<h2>Neury Jorge Montero Mejia</h2>
+<p>Matricula: 2025-0829</p>
+<p>Materia: Sistemas Operativos 3<br>
+Docente: Adrian Alcantara<p/>
+</body>
+</html>
+```
+
+![Contenido de index.html para estudiante.localhost](images/c02-estudiante-index-contenido.jpg)
+
+**11.** Volvemos a editar `httpd.conf`:
+
+```bash
+nano /etc/httpd/conf/httpd.conf
+```
+
+![Segunda edición de httpd.conf](images/c03-nano-httpd-conf-2.jpg)
+
+Agregamos una segunda directiva `Listen`, para que Apache también escuche en el puerto 8080 (además del 80):
+
+```apache
+Listen 80
+Listen 8080
+```
+
+![Directiva Listen 8080 agregada](images/c04-listen-8080.jpg)
+
+Y un segundo bloque `VirtualHost`, para ese puerto:
+
+```apache
+<VirtualHost *:80>
+  ServerName hola.localhost
+  DocumentRoot "/var/www/html/hola"
+  ServerAdmin root@localhost
+</VirtualHost>
+
+<VirtualHost *:8080>
+  ServerName estudiante.localhost
+  DocumentRoot "/var/www/html/estudiante"
+  ServerAdmin root@localhost
+</VirtualHost>
+```
+
+![Bloques VirtualHost para los puertos 80 y 8080](images/c05-virtualhost-ambos.jpg)
+
+**12.** Agregamos también el segundo dominio a `/etc/hosts`:
+
+```text
+127.0.0.1   hola.localhost
+127.0.0.1   estudiante.localhost
+```
+
+![/etc/hosts con hola.localhost y estudiante.localhost](images/c06-etc-hosts-ambos.jpg)
+
+**13.** Reiniciamos el servicio con `systemctl restart httpd` e ingresamos al navegador: ambos sitios funcionan de forma independiente, cada uno en su propio puerto.
+
+![Ambos sitios funcionando en el navegador](images/c07-navegador-ambos-sitios.jpg)
+
+> [!TIP]
+> Esta técnica, donde un mismo servidor atiende varios sitios distintos (cada uno con su propio `ServerName` y `DocumentRoot`), se llama **hosting virtual** (*virtual hosting*). Aquí se diferencian por **puerto** (80 y 8080); en un servidor real orientado a Internet, lo más común es diferenciarlos por **nombre de dominio**, todos escuchando en el mismo puerto 80 o 443, y que Apache elija el sitio correcto según el encabezado `Host` de cada solicitud.
+
+---
+
 ## Solución de problemas frecuentes
 
 | Problema | Causa probable | Solución |
