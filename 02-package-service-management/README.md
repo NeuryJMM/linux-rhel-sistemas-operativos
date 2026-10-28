@@ -457,7 +457,7 @@ dnf install httpd
 
 Se instalan, además del propio `httpd`, sus dependencias (`apr`, `apr-util`, `httpd-filesystem`, `mod_http2`, `redhat-logos-httpd`, entre otras).
 
-![Paquetes a instalar: httpd y sus dependencias](images/a02-paquetes-httpd.png)
+![Paquetes a instalar: httpd y sus dependencias](images/a02-paquetes-httpd.jpg)
 
 **2.** Habilitamos el servicio para que inicie automáticamente con el sistema, lo iniciamos, y verificamos su estado:
 
@@ -469,7 +469,7 @@ systemctl status httpd
 
 El servicio queda **activo (running)**, escuchando en el puerto 80.
 
-![systemctl enable, start y status de httpd](images/a03-enable-start-status.png)
+![systemctl enable, start y status de httpd](images/a03-enable-start-status.jpg)
 
 > [!NOTE]
 > El mensaje `AH00558: httpd: Could not reliably determine the server's fully qualified domain name` es una advertencia común y no impide que el servicio funcione: indica que Apache no pudo determinar automáticamente el nombre de dominio completo del servidor, y usa una dirección por defecto mientras tanto. Se resuelve configurando la directiva `ServerName` en `httpd.conf`.
