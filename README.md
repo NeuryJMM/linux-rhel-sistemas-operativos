@@ -39,6 +39,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 08 | [OpenSCAP: PCI-DSS con OpenSCAP y Nessus](./08-openscap-nessus-pcidss) | Auditoría de cumplimiento PCI-DSS con OpenSCAP/SCAP Workbench, verificación cruzada con Nessus, y remediación automática y manual de vulnerabilidades en RHEL. |
 | 09 | [Administración de tareas con cron y at](./09-task-scheduling-cron-at) | Tareas recurrentes con crontab (sistema y usuario) y tareas de ejecución única con at. |
 | 10 | [Menú GRUB2 y recuperación de contraseña de root](./10-grub2-root-password-recovery) | Personalización del timeout de GRUB2 y recuperación de la contraseña de root con rd.break y SELinux autorelabel. |
+| 11 | [Servidor de correo SMTP con Postfix](./06-postfix-smtp-mail-server) | Postfix como MTA, configurado como relay autenticado hacia Gmail con STARTTLS y SASL. |
 
 ---
 
