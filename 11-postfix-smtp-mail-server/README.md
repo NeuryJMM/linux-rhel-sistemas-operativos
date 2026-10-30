@@ -9,11 +9,7 @@
 
 Instalación y configuración de **Postfix** como agente de transporte de correo (MTA) en RHEL, configurado para reenviar (*relay*) el correo saliente a través del servidor SMTP de Gmail mediante una contraseña de aplicación.
 
-> [!NOTE]
-> Al igual que otras prácticas de este repositorio, esta no tuvo un How-To escrito por separado: se documentó únicamente con capturas de la terminal, tomadas como evidencia del procedimiento.
 
-> [!WARNING]
-> **Credenciales redactadas.** Las capturas originales de esta práctica mostraban, en texto plano, una contraseña de aplicación real de Gmail junto con las direcciones de correo asociadas. Esa información se **cubrió** antes de publicar las imágenes aquí. Si usas una cuenta real para una práctica similar, revoca la contraseña de aplicación una vez termines (o antes de compartir cualquier captura), desde la configuración de seguridad de tu cuenta de Google, y genera una nueva si necesitas seguir usando el relay.
 
 ## Objetivo
 
