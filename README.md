@@ -40,6 +40,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 09 | [Administración de tareas con cron y at](./09-task-scheduling-cron-at) | Tareas recurrentes con crontab (sistema y usuario) y tareas de ejecución única con at. |
 | 10 | [Menú GRUB2 y recuperación de contraseña de root](./10-grub2-root-password-recovery) | Personalización del timeout de GRUB2 y recuperación de la contraseña de root con rd.break y SELinux autorelabel. |
 | 11 | [Servidor de correo SMTP con Postfix](./11-postfix-smtp-mail-server) | Postfix como MTA, configurado como relay autenticado hacia Gmail con STARTTLS y SASL. |
+| 12 | [Servidor de impresión CUPS compartido con Windows](./12-cups-print-server) | CUPS con acceso administrativo restringido por IP, impresora PDF virtual compartida y conexión desde un cliente Windows. |
 
 ---
 
@@ -88,6 +89,7 @@ linux-rhel-sistemas-operativos/
 ├── 09-task-scheduling-cron-at/
 ├── 10-grub2-root-password-recovery/
 ├── 11-postfix-smtp-mail-server/
+├── 12-cups-print-server/
 ├── LICENSE
 └── README.md
 ```
