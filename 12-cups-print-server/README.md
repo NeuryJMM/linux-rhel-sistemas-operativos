@@ -9,8 +9,6 @@
 
 Instalación de **CUPS** (*Common UNIX Printing System*) en RHEL, endurecimiento de su acceso administrativo por IP, creación de una impresora PDF virtual compartida en la red, y conexión a esa impresora desde un equipo Windows.
 
-> [!NOTE]
-> Al igual que otras prácticas de este repositorio, esta no tuvo un How-To escrito por separado: se documentó únicamente con capturas de la terminal y de las interfaces web/Windows, tomadas como evidencia del procedimiento. Una de las capturas incluía, por superposición de la grabación de pantalla, la imagen de la cámara web; se recortó esa parte antes de publicarla aquí.
 
 ## Objetivo
 
