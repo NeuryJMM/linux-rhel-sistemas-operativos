@@ -28,6 +28,7 @@ Programar una tarea recurrente a nivel de sistema, una a nivel de usuario, y una
 - [Parte C: Tareas de ejecución única con at](#parte-c-tareas-de-ejecución-única-con-at)
 - [Sintaxis de cron](#sintaxis-de-cron)
 - [Referencia de comandos](#referencia-de-comandos)
+- [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
 ---
@@ -190,6 +191,13 @@ Un asterisco (`*`) significa "cualquier valor". Por ejemplo, `0 23 * * *` se lee
 | `at <momento>` | Programa una tarea de ejecución única (p. ej. `at now +1 minute`, `at 23:00`) |
 | `atq` | Lista las tareas pendientes programadas con `at` |
 | `atrm <trabajo>` | Elimina una tarea pendiente de `at` por su número de trabajo |
+
+---
+## Demostración en video
+
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica:** [Ver demostración en YouTube](https://youtu.be/2ZoS2iJxqyo?si=NX-UcrVuEES07C4d)
 
 ---
 
