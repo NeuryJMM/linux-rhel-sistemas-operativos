@@ -31,6 +31,7 @@ Aumentar el tiempo de espera del menú de GRUB2 y usar el modo de emergencia del
 - [Parte B: Entrar al modo de emergencia con rd.break](#parte-b-entrar-al-modo-de-emergencia-con-rdbreak)
 - [Parte C: Restablecer la contraseña de root](#parte-c-restablecer-la-contraseña-de-root)
 - [Referencia de comandos](#referencia-de-comandos)
+- [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
 ---
@@ -150,7 +151,14 @@ exit
 | `touch /.autorelabel` | Marca el sistema para que SELinux reetiquete todos los archivos en el siguiente arranque |
 
 ---
+## Demostración en video
 
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica:** [Ver demostración en YouTube](https://youtu.be/f0H1MRPCkRI?si=VoC4t4oKDyjfPqaX)
+
+
+---
 ## Solución de problemas frecuentes
 
 | Problema | Causa probable | Solución |
