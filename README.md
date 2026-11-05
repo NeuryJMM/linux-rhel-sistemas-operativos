@@ -41,6 +41,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 10 | [Menú GRUB2 y recuperación de contraseña de root](./10-grub2-root-password-recovery) | Personalización del timeout de GRUB2 y recuperación de la contraseña de root con rd.break y SELinux autorelabel. |
 | 11 | [Servidor de correo SMTP con Postfix](./11-postfix-smtp-mail-server) | Postfix como MTA, configurado como relay autenticado hacia Gmail con STARTTLS y SASL. |
 | 12 | [Servidor de impresión CUPS compartido con Windows](./12-cups-print-server) | CUPS con acceso administrativo restringido por IP, impresora PDF virtual compartida y conexión desde un cliente Windows. |
+| 13 | [Clúster de alta disponibilidad con Pacemaker y PCS](./12-pacemaker-high-availability-cluster) | Clúster de dos nodos con Pacemaker/PCS y una IP virtual flotante, con prueba de conmutación por error. |
 
 ---
 
@@ -62,6 +63,7 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 10 · Menú GRUB2: Recuperación de contraseña root | [Ver en YouTube](https://youtu.be/f0H1MRPCkRI?si=Nhs-LIlB_GsllqtC) |
 | 11 · Servidor de correos: SMTP Postfix | [Ver en YouTube](https://youtu.be/rgF19a42Zsk?si=pizRTHsgL_GeB1_n) |
 | 12 · Servidor de impresión: CUPS en RHEL | [Ver en YouTube](https://youtu.be/lpj8E2lvS-8?si=FWTTZuWbZYNv0Bhv) |
+| 13 · Clúster de alta disponibilidad con Pacemaker y PCS | [Ver en YouTube](https://www.youtube.com/watch?v=RLBTWSW_8RM&list=PLIJEt4hLYnOVz-2-LYxB4AvbZ1uhmkkcM&index=2) |
 
 Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles, para las demás demostraciones, se pueden encontrar en la sección correspondiente de este repositorio, debido a que son más de 30 videos.
 
