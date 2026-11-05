@@ -439,6 +439,8 @@ dnf clean all
 
 ![dnf clean all](images/comp15-dnf-clean-all.jpg)
 
+---
+**Video de la demostración complementaria (actualización de repositorios e instalación manual de herramientas):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=Q7m_k5S5H2Q&list=PLIJEt4hLYnOVfGU1V3dnSp7UEfaSjzdUX&index=3)
 
 ---
 ## Segunda demostración complementaria: servidor web Apache (httpd)
@@ -631,7 +633,7 @@ Y un segundo bloque `VirtualHost`, para ese puerto:
 > Esta técnica, donde un mismo servidor atiende varios sitios distintos (cada uno con su propio `ServerName` y `DocumentRoot`), se llama **hosting virtual** (*virtual hosting*). Aquí se diferencian por **puerto** (80 y 8080); en un servidor real orientado a Internet, lo más común es diferenciarlos por **nombre de dominio**, todos escuchando en el mismo puerto 80 o 443, y que Apache elija el sitio correcto según el encabezado `Host` de cada solicitud.
 
 ---
-Video de la demostración complementaria servidor web Apache (httpd): [Ver demostración en YouTube](https://www.youtube.com/watch?v=PSEdyWmL1mk&list=PLIJEt4hLYnOXsKb0rnPLkdDJPLSfbitf6&index=3)
+**Video de la segunda demostración complementaria servidor web Apache (httpd):** [Ver demostración en YouTube](https://www.youtube.com/watch?v=PSEdyWmL1mk&list=PLIJEt4hLYnOXsKb0rnPLkdDJPLSfbitf6&index=3)
 
 ---
 
