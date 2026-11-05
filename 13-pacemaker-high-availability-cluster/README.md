@@ -1,6 +1,6 @@
 [← Volver al laboratorio](../README.md)
 
-# 12 · Clúster de alta disponibilidad con Pacemaker y PCS
+# 13 · Clúster de alta disponibilidad con Pacemaker y PCS
 
 ![RHEL](https://img.shields.io/badge/Red%20Hat-RHEL-c084fc?style=flat-square&logo=redhat&logoColor=white)
 ![Pacemaker](https://img.shields.io/badge/Pacemaker-High%20Availability-f472b6?style=flat-square)
