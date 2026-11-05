@@ -34,7 +34,7 @@ Cambiar la interfaz de red `ens160` de un direccionamiento automático (DHCP) a 
 - [Parte F: Guardar y activar los cambios](#parte-f-guardar-y-activar-los-cambios)
 - [Referencia de comandos](#referencia-de-comandos)
 - [Demostración complementaria: servicio SSH entre RHEL y Windows](#demostración-complementaria-servicio-ssh-entre-rhel-y-windows)
-- [Demostración complementaria: sincronización de carpetas con rsync](#demostración-complementaria-sincronización-de-carpetas-con-rsync)
+- [Segunda demostración complementaria: sincronización de carpetas con rsync](#demostración-complementaria-sincronización-de-carpetas-con-rsync)
 - [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
@@ -452,6 +452,8 @@ touch monterito{1..50}.txt
 Esta práctica cuenta con una demostración en video donde se muestra el proceso completo del laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
 
 **Video de la práctica:** [Ver demostración en YouTube](https://www.youtube.com/watch?v=9R5Tt0qDLMA&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=3)
+**Video de la demostración complementaria (SSH entre RHEL y Windows):** [Ver demostración en YouTube](https://youtu.be/BcBzRVgclwM?si=51TuH4Fy4F0iI5kb)
+**Video de la segunda demostración complementaria (sincronización de carpetas con rsync):** [Ver demostración en YouTube](https://youtu.be/wPPaA_pa3Q4?si=P3Q_nUGPaihc2deU)
 
 ---
 
