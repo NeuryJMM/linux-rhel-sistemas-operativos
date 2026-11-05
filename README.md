@@ -54,10 +54,16 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 01 · Administración de usuarios y permisos | [Ver en YouTube](https://www.youtube.com/watch?v=8s3UGKai9P4&list=PLIJEt4hLYnOUAQxFim_nNNvPqBw8Z8VKT) |
 | 02 · Antivirus ClamAV | [Ver en YouTube](https://www.youtube.com/watch?v=WTApO2vpP38) |
 | 03 · Redes en Linux | [Ver en YouTube](https://www.youtube.com/watch?v=9R5Tt0qDLMA&list=PLIJEt4hLYnOVlwzFyi3vGdJAej-IfKZvR&index=3) |
+| 04 · Control de disco duro y formato de particiones | [Ver en YouTube](https://youtu.be/qBTXrDCUGyA?si=CClQ2TB8IOYIrWko) |
+| 05 · Shell scripting en RHEL | [Ver en YouTube](https://youtu.be/tqTEK_8BLtw?si=bVdSzhUc_f9xA5qg) |
 | 07 · Endurecimiento de SSH, contraseñas y firewall | [Ver en YouTube](https://www.youtube.com/watch?v=NtuHPQcl41I) |
 | 08 · OpenSCAP: PCI-DSS con OpenSCAP y Nessus | [Ver en YouTube](https://www.youtube.com/watch?v=XeZdCIBIb3E) |
+| 09 · Administración de tareas | [Ver en YouTube](https://youtu.be/2ZoS2iJxqyo?si=N9wza7K4ILz9_Udo) |
+| 10 · Menú GRUB2: Recuperación de contraseña root | [Ver en YouTube](https://youtu.be/f0H1MRPCkRI?si=Nhs-LIlB_GsllqtC) |
+| 11 · Servidor de correos: SMTP Postfix | [Ver en YouTube](https://youtu.be/rgF19a42Zsk?si=pizRTHsgL_GeB1_n) |
+| 12 · Servidor de impresión: CUPS en RHEL | [Ver en YouTube](https://youtu.be/lpj8E2lvS-8?si=FWTTZuWbZYNv0Bhv) |
 
-Las demostraciones de las prácticas 04, 05 y 06 se agregarán cuando estén disponibles.
+Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles.
 
 ---
 
