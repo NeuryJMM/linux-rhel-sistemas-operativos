@@ -23,6 +23,7 @@ Dos scripts de Bash que automatizan tareas de administración habituales: uno ge
 - [Parte A: backup.sh — respaldo con fecha automática](#parte-a-backupsh--respaldo-con-fecha-automática)
 - [Parte B: ifconfig.sh — captura de la configuración de red](#parte-b-ifconfigsh--captura-de-la-configuración-de-red)
 - [Referencia de comandos](#referencia-de-comandos)
+- [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
 ---
@@ -157,6 +158,12 @@ El archivo contiene la salida completa de `ifconfig`: las interfaces de red del 
 | `chmod +x <script>` | Da permisos de ejecución a un script |
 | `./<script>` | Ejecuta un script desde el directorio actual |
 
+---
+## Demostración en video
+
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica (PRIMERA PARTE):** [Ver demostración en YouTube](https://youtu.be/tqTEK_8BLtw?si=iKxveQwq2F6hYUT0)
 ---
 
 ## Solución de problemas frecuentes
