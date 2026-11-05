@@ -34,6 +34,7 @@ Cambiar la interfaz de red `ens160` de un direccionamiento automático (DHCP) a 
 - [Parte F: Guardar y activar los cambios](#parte-f-guardar-y-activar-los-cambios)
 - [Referencia de comandos](#referencia-de-comandos)
 - [Demostración complementaria: servicio SSH entre RHEL y Windows](#demostración-complementaria-servicio-ssh-entre-rhel-y-windows)
+- [Demostración complementaria: sincronización de carpetas con rsync](#demostración-complementaria-sincronización-de-carpetas-con-rsync)
 - [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
@@ -288,6 +289,145 @@ ssh nmontero@192.168.0.16
 
 > [!NOTE]
 > La autenticación por clave pública es más segura que la autenticación por contraseña: no viaja ninguna contraseña por la red, y es prácticamente inmune a ataques de fuerza bruta (la clave privada nunca sale del equipo cliente). En entornos de producción, una buena práctica adicional es deshabilitar por completo la autenticación por contraseña en `/etc/ssh/sshd_config` (`PasswordAuthentication no`) una vez que las claves están configuradas, para forzar que todo el acceso remoto use claves.
+
+---
+
+## Demostración complementaria: sincronización de carpetas con rsync
+
+Esta demostración sincroniza una carpeta entre dos máquinas RHEL (un equipo principal y un clon) usando **rsync** sobre SSH, primero de forma manual y después automatizada con `cron`.
+
+### Preparar el acceso sin contraseña
+
+**1.** Instalamos `rsync` (requiere privilegios de superusuario):
+
+```bash
+dnf install rsync
+sudo dnf install rsync
+```
+
+![dnf install rsync: requiere sudo](images/a01-dnf-install-rsync.jpg)
+
+**2.** Generamos un par de claves SSH en el equipo principal:
+
+```bash
+ssh-keygen
+```
+
+![Generación del par de claves](images/a02-ssh-keygen.jpg)
+
+**3.** Copiamos la clave pública al equipo clon, para poder conectarnos sin contraseña:
+
+```bash
+ssh-copy-id nmontero@192.168.0.17
+```
+
+![ssh-copy-id hacia el equipo clon](images/a03-ssh-copy-id.jpg)
+
+**4.** Verificamos que el acceso funcione:
+
+```bash
+ssh nmontero@192.168.0.17
+```
+
+![Acceso SSH verificado](images/a04-ssh-verificar-acceso.jpg)
+
+> [!NOTE]
+> `rsync` puede funcionar con contraseña, pero pedirla en cada sincronización es poco práctico, sobre todo si se va a automatizar con `cron`. Por eso se configura antes el acceso por clave pública: así `rsync` puede conectarse por SSH sin intervención manual.
+
+### Crear carpetas y archivos de prueba
+
+**5.** En el equipo principal, creamos la carpeta que se va a sincronizar y la llenamos con 100 archivos de prueba, usando expansión de llaves de Bash:
+
+```bash
+mkdir ~/copia
+cd ~/copia
+touch 2025-0829{1..100}.txt
+```
+
+![mkdir ~/copia y creación de 100 archivos](images/b01-mkdir-copia-touch.jpg)
+
+**6.** En el equipo clon, creamos la carpeta de destino:
+
+```bash
+mkdir ~/copia2
+```
+
+![mkdir ~/copia2 en el clon](images/b02-mkdir-copia2.jpg)
+
+### Sincronización manual
+
+**7.** Ejecutamos `rsync` desde el equipo principal hacia el clon:
+
+```bash
+rsync -avz ~/copia/ nmontero@192.168.0.17:~/copia2/
+```
+
+![rsync manual hacia el clon](images/c01-rsync-manual.jpg)
+
+- `-a` (*archive*): preserva permisos, fechas, enlaces simbólicos y la estructura de directorios.
+- `-v` (*verbose*): muestra cada archivo que se transfiere.
+- `-z`: comprime los datos durante la transferencia.
+
+![Progreso de la transferencia](images/c02-rsync-salida.jpg)
+
+**8.** Verificamos en el equipo clon que los 100 archivos llegaron correctamente:
+
+![Archivos sincronizados en el clon](images/c03-copia2-resultado.jpg)
+
+> [!TIP]
+> La barra inclinada final en `~/copia/` (origen) importa: le indica a `rsync` que copie el **contenido** de la carpeta hacia el destino, en vez de crear una subcarpeta `copia` dentro de `~/copia2/`. Omitirla es un error común que cambia la estructura final de archivos.
+
+### Automatizar la sincronización con cron
+
+**9.** Creamos un script que ejecuta el mismo comando de sincronización:
+
+```bash
+sudo nano script.sh
+```
+
+![nano script.sh](images/d01-nano-script-sh.jpg)
+
+```bash
+#!/bin/bash
+rsync -avz ~/copia/ nmontero@192.168.0.17:~/copia2/
+```
+
+![Contenido de script.sh](images/d02-script-sh-contenido.jpg)
+
+**10.** Le damos permisos de ejecución y abrimos el crontab para programarlo:
+
+```bash
+sudo chmod +x script.sh
+crontab -e
+```
+
+![chmod +x y crontab -e](images/d03-chmod-crontab-e.jpg)
+
+**11.** Agregamos una entrada que ejecuta el script **cada minuto** (con fines de demostración; en un entorno real se usaría un intervalo más razonable, como cada hora):
+
+```cron
+* * * * * /home/nmontero/script.sh
+```
+
+![Entrada de crontab](images/d04-crontab-entrada.jpg)
+
+### Verificar la sincronización automática
+
+**12.** En el equipo principal, agregamos 50 archivos nuevos a la carpeta de origen:
+
+```bash
+cd ~/copia
+touch monterito{1..50}.txt
+```
+
+![Creación de 50 archivos adicionales](images/e01-nuevos-archivos.jpg)
+
+**13.** Sin ejecutar nada manualmente, revisamos la carpeta del clon pasado un minuto: los archivos nuevos ya están ahí, sincronizados automáticamente por la tarea de `cron`.
+
+![Sincronización automática confirmada](images/e02-sincronizacion-automatica.jpg)
+
+> [!NOTE]
+> Esta prueba combina dos prácticas de este repositorio: la automatización de tareas con `cron` ([práctica 09](../09-task-scheduling-cron-at)) y la sincronización remota con `rsync`. Es un ejemplo realista de cómo se automatizan los respaldos incrementales entre servidores en un entorno de producción.
 
 ---
 
