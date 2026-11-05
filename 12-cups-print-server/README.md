@@ -35,6 +35,7 @@ Levantar un servidor de impresión en RHEL, restringir su panel de administraci�
 - [Parte F: Crear la impresora compartida](#parte-f-crear-la-impresora-compartida)
 - [Parte G: Conectar la impresora desde Windows](#parte-g-conectar-la-impresora-desde-windows)
 - [Referencia de comandos](#referencia-de-comandos)
+- [Demostración en video](#demostración-en-video)
 - [Solución de problemas frecuentes](#solución-de-problemas-frecuentes)
 
 ---
@@ -265,6 +266,13 @@ http://192.168.0.16:631/printers/Neury
 | `systemctl start/enable/restart cups` | Inicia, habilita al arranque y reinicia el servicio de CUPS |
 | `https://<servidor>:631` | Interfaz web de administración de CUPS |
 | `http://<servidor>:631/printers/<nombre>` | URL de una impresora publicada, usada para conectarse desde un cliente |
+
+---
+## Demostración en video
+
+Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
+
+**Video de la práctica:** [Ver demostración en YouTube](https://youtu.be/lpj8E2lvS-8?si=ZTxSml33ERsddrgD)
 
 ---
 
