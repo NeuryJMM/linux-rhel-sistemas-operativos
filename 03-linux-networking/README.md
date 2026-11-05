@@ -409,7 +409,7 @@ crontab -e
 * * * * * /home/nmontero/script.sh
 ```
 
-![Entrada de crontab](images/d04-crontab-entrada.jpg)
+![Entrada de crontab](images/d04-crontab-entrada.png)
 
 ### Verificar la sincronización automática
 
