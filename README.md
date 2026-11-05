@@ -63,7 +63,7 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 11 · Servidor de correos: SMTP Postfix | [Ver en YouTube](https://youtu.be/rgF19a42Zsk?si=pizRTHsgL_GeB1_n) |
 | 12 · Servidor de impresión: CUPS en RHEL | [Ver en YouTube](https://youtu.be/lpj8E2lvS-8?si=FWTTZuWbZYNv0Bhv) |
 
-Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles.
+Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles, para las demás demostraciones, se pueden encontrar en la sección correspondiente de este repositorio, debido a que son más de 30 videos.
 
 ---
 
