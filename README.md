@@ -98,6 +98,7 @@ linux-rhel-sistemas-operativos/
 ├── 10-grub2-root-password-recovery/
 ├── 11-postfix-smtp-mail-server/
 ├── 12-cups-print-server/
+├── 13-pacemaker-high-availability-cluster/
 ├── LICENSE
 └── README.md
 ```
