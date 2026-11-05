@@ -163,7 +163,7 @@ El archivo contiene la salida completa de `ifconfig`: las interfaces de red del 
 
 Esta práctica cuenta con una demostración en video donde se muestra el proceso completo en el laboratorio. Las capturas del procedimiento se encuentran en la carpeta `images/`.
 
-**Video de la práctica (PRIMERA PARTE):** [Ver demostración en YouTube](https://youtu.be/tqTEK_8BLtw?si=iKxveQwq2F6hYUT0)
+**Video de la práctica:** [Ver demostración en YouTube](https://youtu.be/tqTEK_8BLtw?si=iKxveQwq2F6hYUT0)
 ---
 
 ## Solución de problemas frecuentes
