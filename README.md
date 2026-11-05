@@ -44,6 +44,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 13 | [Clúster de alta disponibilidad con Pacemaker y PCS](./13-pacemaker-high-availability-cluster) | Clúster de dos nodos con Pacemaker/PCS y una IP virtual flotante, con prueba de conmutación por error. |
 | 14 | [Clúster de alta disponibilidad HTTP con keepalived](./14-keepalived-http-high-availability) | Apache en dos nodos con IP virtual VRRP gestionada por keepalived, con prueba de conmutación por error. |
 | 15 | [Cifrado de archivos con GPG](./15-gpg-file-encryption) | Cifrado y descifrado simétrico de archivos con GPG2 en RHEL. |
+| 16 | [Control de tráfico con iptables y firewalld](./16-iptables-firewalld) | Permitir y bloquear HTTP, FTP y SSH con iptables y con firewalld, y diferencias entre ambos enfoques. |
 
 ---
 
@@ -68,6 +69,7 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 13 · Clúster de alta disponibilidad con Pacemaker y PCS | [Ver en YouTube](https://www.youtube.com/watch?v=RLBTWSW_8RM&list=PLIJEt4hLYnOVz-2-LYxB4AvbZ1uhmkkcM&index=2) |
 | 14 · Clúster de alta disponibilidad HTTP con keepalived | [Ver en YouTube](https://youtu.be/nfFdH22lkGo?si=m2CmajhCpSDIFEJG) |
 | 15 · Cifrado de archivos con GPG | [Ver en YouTube](https://www.youtube.com/watch?v=uiblI8cKXT0&list=PLIJEt4hLYnOXYtfF8MnxM5sMboz-KI20D&index=4) |
+| 16 · Control de tráfico con iptables y firewalld | [Ver en YouTube](https://www.youtube.com/watch?v=YKF_xFRcbp4&list=PLIJEt4hLYnOXYtfF8MnxM5sMboz-KI20D&index=3) |
 
 Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles, para las demás demostraciones, se pueden encontrar en la sección correspondiente de este repositorio, debido a que son más de 30 videos.
 
@@ -105,6 +107,7 @@ linux-rhel-sistemas-operativos/
 ├── 13-pacemaker-high-availability-cluster/
 ├── 14-keepalived-http-high-availability/
 ├── 15-gpg-file-encryption/
+├── 16-iptables-firewalld/
 ├── LICENSE
 └── README.md
 ```
