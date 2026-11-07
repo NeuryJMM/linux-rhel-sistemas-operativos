@@ -46,6 +46,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 15 | [Cifrado de archivos con GPG](./15-gpg-file-encryption) | Cifrado y descifrado simétrico de archivos con GPG2 en RHEL. |
 | 16 | [Control de tráfico con iptables y firewalld](./16-iptables-firewalld) | Permitir y bloquear HTTP, FTP y SSH con iptables y con firewalld, y diferencias entre ambos enfoques. |
 | 17 | [Detección de intrusos con Snort 3 (IDS)](./17-snort-ids) | Compilación de Snort 3 desde el código fuente, reglas personalizadas para ICMP, FTP, SSH y HTTP, y detección en tiempo real. |
+| 18 | [Autenticación de dos factores en SSH con Google Authenticator](./18-ssh-2fa-google-authenticator) | 2FA con TOTP mediante el módulo PAM de Google Authenticator, sshd y contextos SELinux. |
 
 ---
 
@@ -72,6 +73,7 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 15 · Cifrado de archivos con GPG | [Ver en YouTube](https://www.youtube.com/watch?v=uiblI8cKXT0&list=PLIJEt4hLYnOXYtfF8MnxM5sMboz-KI20D&index=4) |
 | 16 · Control de tráfico con iptables y firewalld | [Ver en YouTube](https://www.youtube.com/watch?v=YKF_xFRcbp4&list=PLIJEt4hLYnOXYtfF8MnxM5sMboz-KI20D&index=3) |
 | 17 · Detección de intrusos con Snort 3 (IDS) | [Ver en YouTube](https://youtu.be/ByXoL5YEQG8?si=PNLeWr4usH0o8ycU) |
+| 18 · Autenticación de dos factores en SSH con Google Authenticator | [Ver en YouTube](https://www.youtube.com/watch?v=ooAtZRofuto&list=PLIJEt4hLYnOXYtfF8MnxM5sMboz-KI20D) |
 
 Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles, para las demás demostraciones, se pueden encontrar en la sección correspondiente de este repositorio, debido a que son más de 30 videos.
 
@@ -111,6 +113,7 @@ linux-rhel-sistemas-operativos/
 ├── 15-gpg-file-encryption/
 ├── 16-iptables-firewalld/
 ├── 17-snort-ids/
+├── 18-ssh-2fa-google-authenticator/
 ├── LICENSE
 └── README.md
 ```
