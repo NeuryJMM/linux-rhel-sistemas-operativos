@@ -48,6 +48,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 17 | [Detección de intrusos con Snort 3 (IDS)](./17-snort-ids) | Compilación de Snort 3 desde el código fuente, reglas personalizadas para ICMP, FTP, SSH y HTTP, y detección en tiempo real. |
 | 18 | [Autenticación de dos factores en SSH con Google Authenticator](./18-ssh-2fa-google-authenticator) | 2FA con TOTP mediante el módulo PAM de Google Authenticator, sshd y contextos SELinux. |
 | 19 | [Compartir archivos entre Linux con NFS](./19-nfs-file-sharing) | Servidor NFS en RHEL con directorio exportado, cliente con montaje manual y permanente en /etc/fstab. |
+| 20 | [Servidor de archivos compatible con Windows con Samba](./20-samba-fileserver) | Recurso compartido SMB en RHEL con autenticación por usuario, acceso desde Windows como unidad de red y verificación de cambios. |
 
 ---
 
@@ -76,6 +77,7 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 17 · Detección de intrusos con Snort 3 (IDS) | [Ver en YouTube](https://youtu.be/ByXoL5YEQG8?si=PNLeWr4usH0o8ycU) |
 | 18 · Autenticación de dos factores en SSH con Google Authenticator | [Ver en YouTube](https://www.youtube.com/watch?v=ooAtZRofuto&list=PLIJEt4hLYnOXYtfF8MnxM5sMboz-KI20D) |
 | 19 · Compartir archivos entre Linux con NFS | [Ver en YouTube](https://www.youtube.com/watch?v=uB2a7cCQl5A) |
+| 20 · Servidor de archivos compatible con Windows con Samba | [Ver en YouTube](https://www.youtube.com/watch?v=jjoOv4EGQgc) |
 
 Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles, para las demás demostraciones, se pueden encontrar en la sección correspondiente de este repositorio, debido a que son más de 30 videos.
 
@@ -117,6 +119,7 @@ linux-rhel-sistemas-operativos/
 ├── 17-snort-ids/
 ├── 18-ssh-2fa-google-authenticator/
 ├── 19-nfs-file-sharing/
+├── 20-samba-fileserver/
 ├── LICENSE
 └── README.md
 ```
