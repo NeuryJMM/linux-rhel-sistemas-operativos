@@ -50,6 +50,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 19 | [Compartir archivos entre Linux con NFS](./19-nfs-file-sharing) | Servidor NFS en RHEL con directorio exportado, cliente con montaje manual y permanente en /etc/fstab. |
 | 20 | [Servidor de archivos compatible con Windows con Samba](./20-samba-fileserver) | Recurso compartido SMB en RHEL con autenticación por usuario, acceso desde Windows como unidad de red y verificación de cambios. |
 | 21 | [Controlador de dominio Active Directory con Samba](./21-samba-active-directory-dc) | Samba 4.16 compilado desde el código fuente como DC de Active Directory, con DNS interno, Kerberos y un cliente Windows unido al dominio. |
+| 22 | [Docker y servidor web Nginx en un contenedor](./22-docker-nginx) | Instalación de Docker Engine desde el repositorio oficial y despliegue de Nginx con un volumen montado. |
 
 ---
 
@@ -80,6 +81,7 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 19 · Compartir archivos entre Linux con NFS | [Ver en YouTube](https://www.youtube.com/watch?v=uB2a7cCQl5A) |
 | 20 · Servidor de archivos compatible con Windows con Samba | [Ver en YouTube](https://www.youtube.com/watch?v=jjoOv4EGQgc) |
 | 21 · Controlador de dominio Active Directory con Samba | [Ver en YouTube](https://www.youtube.com/watch?v=fUXbHzmvjdM) |
+| 22 · Docker y servidor web Nginx en un contenedor | [Ver en YouTube](https://www.youtube.com/watch?v=u8yiPQjEThI) |
 
 Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles, para las demás demostraciones, se pueden encontrar en la sección correspondiente de este repositorio, debido a que son más de 30 videos.
 
@@ -123,6 +125,7 @@ linux-rhel-sistemas-operativos/
 ├── 19-nfs-file-sharing/
 ├── 20-samba-fileserver/
 ├── 21-samba-active-directory-dc/
+├── 22-docker-nginx/
 ├── LICENSE
 └── README.md
 ```
