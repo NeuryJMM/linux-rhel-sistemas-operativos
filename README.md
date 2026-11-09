@@ -49,6 +49,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 18 | [Autenticación de dos factores en SSH con Google Authenticator](./18-ssh-2fa-google-authenticator) | 2FA con TOTP mediante el módulo PAM de Google Authenticator, sshd y contextos SELinux. |
 | 19 | [Compartir archivos entre Linux con NFS](./19-nfs-file-sharing) | Servidor NFS en RHEL con directorio exportado, cliente con montaje manual y permanente en /etc/fstab. |
 | 20 | [Servidor de archivos compatible con Windows con Samba](./20-samba-fileserver) | Recurso compartido SMB en RHEL con autenticación por usuario, acceso desde Windows como unidad de red y verificación de cambios. |
+| 21 | [Controlador de dominio Active Directory con Samba](./21-samba-active-directory-dc) | Samba 4.16 compilado desde el código fuente como DC de Active Directory, con DNS interno, Kerberos y un cliente Windows unido al dominio. |
 
 ---
 
@@ -78,6 +79,7 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 18 · Autenticación de dos factores en SSH con Google Authenticator | [Ver en YouTube](https://www.youtube.com/watch?v=ooAtZRofuto&list=PLIJEt4hLYnOXYtfF8MnxM5sMboz-KI20D) |
 | 19 · Compartir archivos entre Linux con NFS | [Ver en YouTube](https://www.youtube.com/watch?v=uB2a7cCQl5A) |
 | 20 · Servidor de archivos compatible con Windows con Samba | [Ver en YouTube](https://www.youtube.com/watch?v=jjoOv4EGQgc) |
+| 21 · Controlador de dominio Active Directory con Samba | [Ver en YouTube](https://www.youtube.com/watch?v=fUXbHzmvjdM) |
 
 Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles, para las demás demostraciones, se pueden encontrar en la sección correspondiente de este repositorio, debido a que son más de 30 videos.
 
@@ -120,6 +122,7 @@ linux-rhel-sistemas-operativos/
 ├── 18-ssh-2fa-google-authenticator/
 ├── 19-nfs-file-sharing/
 ├── 20-samba-fileserver/
+├── 21-samba-active-directory-dc/
 ├── LICENSE
 └── README.md
 ```
