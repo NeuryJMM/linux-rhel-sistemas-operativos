@@ -52,6 +52,7 @@ Cada práctica se documenta con los comandos utilizados, capturas de la terminal
 | 21 | [Controlador de dominio Active Directory con Samba](./21-samba-active-directory-dc) | Samba 4.16 compilado desde el código fuente como DC de Active Directory, con DNS interno, Kerberos y un cliente Windows unido al dominio. |
 | 22 | [Docker y servidor web Nginx en un contenedor](./22-docker-nginx) | Instalación de Docker Engine desde el repositorio oficial y despliegue de Nginx con un volumen montado. |
 | 23 | [Administración de contenedores con Portainer](./23-docker-portainer) | Portainer CE sobre Docker, conexión de un entorno mediante el agente y control gráfico de contenedores. |
+| 24 | [Despliegue de WordPress con Docker Compose](./24-docker-compose-wordpress) | WordPress y MySQL definidos en un archivo docker-compose.yml, con volúmenes persistentes y red interna. |
 
 ---
 
@@ -84,6 +85,7 @@ Los siguientes enlaces permiten acceder directamente a las demostraciones en vid
 | 21 · Controlador de dominio Active Directory con Samba | [Ver en YouTube](https://www.youtube.com/watch?v=fUXbHzmvjdM) |
 | 22 · Docker y servidor web Nginx en un contenedor | [Ver en YouTube](https://www.youtube.com/watch?v=u8yiPQjEThI) |
 | 23 · Administración de contenedores con Portainer | [Ver en YouTube](https://www.youtube.com/watch?v=k6j5S9PXwLk) |
+| 24 · Despliegue de WordPress con Docker Compose | [Ver en YouTube](https://www.youtube.com/watch?v=Pe-R_S0-n98) |
 
 Las demostraciones de las prácticas 06 y las demás se agregarán cuando estén disponibles, para las demás demostraciones, se pueden encontrar en la sección correspondiente de este repositorio, debido a que son más de 30 videos.
 
@@ -129,6 +131,7 @@ linux-rhel-sistemas-operativos/
 ├── 21-samba-active-directory-dc/
 ├── 22-docker-nginx/
 ├── 23-docker-portainer/
+├── 24-docker-compose-wordpress/
 ├── LICENSE
 └── README.md
 ```
